@@ -18,10 +18,10 @@ com.example.finflex.app-core-1.13.1-16 C:\Users\sivan\.gradle\caches\transforms-
 com.example.finflex.app-lifecycle-runtime-2.7.0-17 C:\Users\sivan\.gradle\caches\transforms-3\c8996eb6ce8efabee1883fe1486006c9\transformed\lifecycle-runtime-2.7.0\res
 com.example.finflex.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-18 C:\Users\sivan\.gradle\caches\transforms-3\ca2eed4266fd24517e583e6618aa3924\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
 com.example.finflex.app-jetified-tracing-1.2.0-19 C:\Users\sivan\.gradle\caches\transforms-3\fee79d0d8ef3af5dbc14ef6d22d028cf\transformed\jetified-tracing-1.2.0\res
-com.example.finflex.app-debug-20 C:\Users\sivan\finflex\android\app\src\debug\res
-com.example.finflex.app-main-21 C:\Users\sivan\finflex\android\app\src\main\res
-com.example.finflex.app-pngs-22 C:\Users\sivan\finflex\build\app\generated\res\pngs\debug
-com.example.finflex.app-resValues-23 C:\Users\sivan\finflex\build\app\generated\res\resValues\debug
-com.example.finflex.app-packageDebugResources-24 C:\Users\sivan\finflex\build\app\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.finflex.app-packageDebugResources-25 C:\Users\sivan\finflex\build\app\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.finflex.app-merged_res-26 C:\Users\sivan\finflex\build\app\intermediates\merged_res\debug
+com.example.finflex.app-debug-20 C:\Users\sivan\Desktop\FinFlex\android\app\src\debug\res
+com.example.finflex.app-main-21 C:\Users\sivan\Desktop\FinFlex\android\app\src\main\res
+com.example.finflex.app-pngs-22 C:\Users\sivan\Desktop\FinFlex\build\app\generated\res\pngs\debug
+com.example.finflex.app-resValues-23 C:\Users\sivan\Desktop\FinFlex\build\app\generated\res\resValues\debug
+com.example.finflex.app-packageDebugResources-24 C:\Users\sivan\Desktop\FinFlex\build\app\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.finflex.app-packageDebugResources-25 C:\Users\sivan\Desktop\FinFlex\build\app\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.finflex.app-merged_res-26 C:\Users\sivan\Desktop\FinFlex\build\app\intermediates\merged_res\debug

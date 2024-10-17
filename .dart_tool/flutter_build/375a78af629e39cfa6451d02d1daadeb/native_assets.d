@@ -1,0 +1,1 @@
+ C:\\Users\\sivan\\Desktop\\FinFlex\\.dart_tool\\flutter_build\\375a78af629e39cfa6451d02d1daadeb\\native_assets.yaml: 
