@@ -4,15 +4,16 @@ import 'package:finflex/core/services/auth_service.dart';
 import 'package:finflex/core/globalvalues/userauth_model.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/core/services/sharedpref_service.dart';
-// import 'package:finflex/screens/main/screen_welcome.dart';
-// import 'package:finflex/screens/dashboards/user_dashboard.dart';
+import 'package:finflex/screens/main/screen_welcome.dart';
+import 'package:finflex/screens/dashboards/user_dashboard.dart';
 import 'package:finflex/screens/widgets/shimmer_home.dart';
 import 'package:provider/provider.dart';
 import '../../main.dart';
+import '../../screens/dashboards/admin_dashboard.dart';
+import '../../screens/main/screen_disabledacc.dart';
 import '../../screens/widgets/splash_loading.dart';
-// import '../../screens/dashboards/admin_dashboard.dart';
-// import '../../screens/main/screen_disabledacc.dart';
-// import '../../screens/authentication/screen_login.dart';
+import '../../screens/authentication/screen_login.dart';
+
 // ignore: must_be_immutable, use_key_in_widget_constructors
 class RoutingService extends StatelessWidget {
   @override
@@ -33,14 +34,14 @@ class RoutingService extends StatelessWidget {
                   (BuildContext context, AsyncSnapshot<UserData> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.data!.status == "disabled") {
-                    // return const DisabledAccount();
+                    return const DisabledAccount();
                   } else {
                     if (snapshot.data!.role == "admin") {
                       //Admin Dashboard
-                      // return AdminDashBoard();
+                      return AdminDashBoard();
                     } else {
                       //User Dashboard
-                      // return UserDashBoard();
+                      return UserDashBoard();
                     }
                   }
                 }
@@ -54,9 +55,9 @@ class RoutingService extends StatelessWidget {
               builder: (BuildContext context, AsyncSnapshot<bool?> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.data == false) {
-                    // return const IntroScreen();
+                    return const IntroScreen();
                   } else {
-                    // return const LoginPage();
+                    return const LoginPage();
                   }
                 }
                 return const LoadingScreen(

@@ -1,7 +1,7 @@
-import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../core/globalvalues/sizedboxes.dart' as sb;
+import '../../core/globalvalues/theme_color.dart';
 
 class HomeShimmer extends StatelessWidget {
   const HomeShimmer({super.key});

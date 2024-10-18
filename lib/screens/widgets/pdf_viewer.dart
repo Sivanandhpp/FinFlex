@@ -1,4 +1,3 @@
-// import 'package:finflex/globalvalues/theme_color.dart';
 // import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -77,3 +76,14 @@
 //     );
 //   }
 // }
+
+import 'package:flutter/material.dart';
+
+class PdfViewer extends StatelessWidget {
+  const PdfViewer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}

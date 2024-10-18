@@ -1,8 +1,7 @@
-import 'package:finflex/core/globalvalues/font_size.dart';
-import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import '../../core/globalvalues/font_size.dart';
+import '../../core/globalvalues/theme_color.dart';
 
 class MainButton extends StatelessWidget {
   final String text;

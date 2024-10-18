@@ -1,7 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/core/services/sharedpref_service.dart';
-import 'package:flutter/cupertino.dart';
-
 
 class UserData {
   late String name,

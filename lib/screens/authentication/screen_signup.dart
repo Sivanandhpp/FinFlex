@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
-import '../../../core/globalvalues/font_size.dart';
+import '../../core/services/auth_service.dart';
+import '../../core/globalvalues/font_size.dart';
 import '../widgets/main_button.dart';
-import '../../../core/globalvalues/theme_color.dart';
+import '../../core/globalvalues/theme_color.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _SignupScreenState createState() => _SignupScreenState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneNoController = TextEditingController();
@@ -25,7 +25,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final authService = Provider.of<AuthService>(context);
+    final authService = Provider.of<AuthService>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -130,7 +130,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           if (_emailController.text.isEmpty) {
                             return "This field can't be empty";
                           } else if (_emailController.text.split('@').last !=
-                                  'nerve.com' &&
+                                  'finflex.com' &&
                               _emailController.text.split('@').last !=
                                   'gmail.com') {
                             return "Enter a valid E-Mail ID";
@@ -174,17 +174,22 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.next,
-                        onFieldSubmitted: (value) async {
-                          if (_formKey.currentState!.validate()) {
-                            // await authService.createUserWithEmailAndPassword(
-                            //     _nameController.text,
-                            //     _phoneNoController.text,
-                            //     _emailController.text,
-                            //     _passwordController.text,
-                            //   );
-                            Navigator.pop(context);
-                          }
-                        },
+                        // onFieldSubmitted: (value) async {
+                        //   if (_formKey.currentState!.validate()) {
+                        //     if (_is2015) {
+                        //       globals.revision = '2015';
+                        //     } else {
+                        //       globals.revision = '2021';
+                        //     }
+                        //     await authService.createUserWithEmailAndPassword(
+                        //         _nameController.text,
+                        //         _phoneNoController.text,
+                        //         _emailController.text,
+                        //         _passwordController.text,
+                        //         globals.revision);
+                        //     Navigator.pop(context);
+                        //   }
+                        // },
                         cursorColor: ThemeColor.primary,
                         decoration: InputDecoration(
                           fillColor: ThemeColor.textFieldBgColor,
@@ -201,29 +206,28 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 16),
-
+                   
+                     
                       const SizedBox(height: 20),
                       MainButton(
                         text: 'Sign Up',
-                        onTap: () {},
-                        // onTap: () async {
-                        //   if (_batch < 2021) {
-                        //     _revision = "2015";
-                        //   }
-                        //   if (_formKey.currentState!.validate()) {
-                        //     await authService.createUserWithEmailAndPassword(
-                        //         _nameController.text,
-                        //         _phoneNoController.text,
-                        //         _emailController.text,
-                        //         _passwordController.text,
-                        //         _batch.toString(),
-                        //         _revision,
-                        //         context);
-                        //     // ignore: use_build_context_synchronously
-                        //     Navigator.pop(context);
-                        //   }
-                        // },
+                        onTap: () async {
+                          if (_batch < 2021) {
+                            _revision = "2015";
+                          }
+                          if (_formKey.currentState!.validate()) {
+                            await authService.createUserWithEmailAndPassword(
+                                _nameController.text,
+                                _phoneNoController.text,
+                                _emailController.text,
+                                _passwordController.text,
+                                _batch.toString(),
+                                _revision,
+                                context);
+                            // ignore: use_build_context_synchronously
+                            Navigator.pop(context);
+                          }
+                        },
                       ),
 
                       Padding(

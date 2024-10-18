@@ -1,7 +1,6 @@
-import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import '../../core/globalvalues/theme_color.dart';
 
 class ErrorPopup {
   popupError(String title, String err, BuildContext context) {

@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart' as firebase_core;
 import 'package:flutter/cupertino.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/main.dart';
+
 import 'error_handler.dart';
 
 class Storage {
@@ -56,7 +57,7 @@ class Storage {
     String pdfNamePursed = pdfName.replaceAll(RegExp('\\s+'), '%20');
     String semsterPursed = semester.replaceAll(RegExp('\\s+'), '%20');
     // ignore: unnecessary_brace_in_string_interps
-    return "https://firebasestorage.googleapis.com/v0/b/nerve-io.appspot.com/o/docs%2F${revision}%2F${semsterPursed}%2F${content}%2F${pdfNamePursed}?alt=media";
+    return "https://firebasestorage.googleapis.com/v0/b/finflex-io.appspot.com/o/docs%2F${revision}%2F${semsterPursed}%2F${content}%2F${pdfNamePursed}?alt=media";
   }
 
   // TO HANDLE NOTIFICATION IMG
@@ -69,7 +70,7 @@ class Storage {
     } on firebase_core.FirebaseException catch (e) {
       errHandler.fromErrorCode(e, context);
     }
-    return "https://firebasestorage.googleapis.com/v0/b/nerve-io.appspot.com/o/notifications%2F$fileNamePursed?alt=media";
+    return "https://firebasestorage.googleapis.com/v0/b/finflex-io.appspot.com/o/notifications%2F$fileNamePursed?alt=media";
   }
 
   //TO HANDLE PROFILE IMAGE
@@ -78,7 +79,7 @@ class Storage {
     File file = File(filePath);
     String fileNamePursed = fileName.replaceAll(RegExp('\\s+'), 'x');
     String url =
-        "https://firebasestorage.googleapis.com/v0/b/nerve-io.appspot.com/o/profile%2F$fileNamePursed?alt=media";
+        "https://firebasestorage.googleapis.com/v0/b/finflex-io.appspot.com/o/profile%2F$fileNamePursed?alt=media";
     userData.profile = url;
     try {
       await storage.ref('profile/$fileNamePursed').putFile(file).then((value) {

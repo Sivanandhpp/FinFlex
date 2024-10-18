@@ -1,8 +1,7 @@
-import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import '../../core/globalvalues/theme_color.dart';
 
 class ImageViewer extends StatelessWidget {
   const ImageViewer({super.key, required this.src, required this.imgName});

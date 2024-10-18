@@ -1,22 +1,21 @@
-import 'package:finflex/core/globalvalues/font_size.dart';
-import 'package:finflex/core/globalvalues/theme_color.dart';
-import 'package:finflex/screens/authentication/signup_screen.dart';
-import 'package:finflex/screens/widgets/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:finflex/screens/authentication/screen_signup.dart';
 import 'package:provider/provider.dart';
-// import '../../core/services/auth_service.dart';
+import '../../core/services/auth_service.dart';
+import '../../core/globalvalues/font_size.dart';
+import '../widgets/main_button.dart';
+import '../../core/globalvalues/theme_color.dart';
 
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailController = TextEditingController();
@@ -24,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final authService = Provider.of<AuthService>(context);
+    final authService = Provider.of<AuthService>(context);
     return Scaffold(
       backgroundColor: ThemeColor.scaffoldBgColor,
       body: SafeArea(
@@ -68,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (_emailController.text.isEmpty) {
                             return "This field can't be empty";
                           } else if (_emailController.text.split('@').last !=
-                                  'nerve.com' &&
+                                  'finflex.com' &&
                               _emailController.text.split('@').last !=
                                   'gmail.com') {
                             return "Enter a valid E-Mail ID";
@@ -115,10 +114,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         textInputAction: TextInputAction.done,
                         onFieldSubmitted: (value) {
                           if (_formKey.currentState!.validate()) {
-                            // authService.signInWithEmailAndPassword(
-                            //     _emailController.text,
-                            //     _passwordController.text,
-                            //     context);
+                            authService.signInWithEmailAndPassword(
+                                _emailController.text,
+                                _passwordController.text,
+                                context);
                           }
                         },
                         cursorColor: ThemeColor.primary,
@@ -190,10 +189,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         text: 'Login',
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
-                            // authService.signInWithEmailAndPassword(
-                            //     _emailController.text,
-                            //     _passwordController.text,
-                            //     context);
+                            authService.signInWithEmailAndPassword(
+                                _emailController.text,
+                                _passwordController.text,
+                                context);
                           }
                         },
                       ),
@@ -214,11 +213,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () 
-                        => Navigator.push(
+                        onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignupScreen(),
+                            builder: (context) => const SignUpPage(),
                           ),
                         ),
                         child: Text(

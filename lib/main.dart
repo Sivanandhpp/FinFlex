@@ -1,8 +1,8 @@
 import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:finflex/core/globalvalues/user_data.dart';
 import 'package:finflex/core/services/auth_service.dart';
+import 'package:finflex/core/services/routing_service.dart';
 import 'package:finflex/firebase_options.dart';
-import 'package:finflex/screens/authentication/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: ThemeColor.scaffoldBgColor,
             primarySwatch: Colors.blue,
           ),
-          home: LoginScreen()),
+          home: RoutingService()),
     );
   }
 }

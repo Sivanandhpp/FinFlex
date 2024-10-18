@@ -1,9 +1,9 @@
-import 'package:finflex/main.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/core/services/error_handler.dart';
 import 'package:finflex/core/services/sharedpref_service.dart';
+import '../../main.dart';
 import 'package:finflex/core/globalvalues/userauth_model.dart';
 
 class AuthService {
@@ -60,7 +60,7 @@ class AuthService {
       credential.user!.linkWithPhoneNumber(phoneNo);
       credential.user!.updateDisplayName(name);
       userData.setUserData(credential.user!.uid, name, email, phoneNo, password,
-          batch, revision, 'user','null','active', true);
+          batch, revision, 'user', 'null', 'active', true);
       return _userFromFirebase(credential.user);
     } on auth.FirebaseAuthException catch (e) {
       errHandler.fromErrorCode(e, context);
