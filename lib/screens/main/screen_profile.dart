@@ -288,7 +288,7 @@ class _ScreenProfileState extends State<ScreenProfile> {
                 ),
                 sb.height10,
                 Text(
-                  "Batch: ${userData.batch} | Revision: ${userData.revision}",
+                  "Batch: ${userData.accountCreationDate} | Revision: dd",
                   style: GoogleFonts.ubuntu(
                     color: ThemeColor.black,
                     fontSize: 20,

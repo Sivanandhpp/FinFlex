@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Syllabus",
+                                      "FinFlex",
                                       style: GoogleFonts.ubuntu(
                                           fontSize: 25,
                                           fontWeight: FontWeight.bold,
@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       const BorderRadius.all(
                                                           Radius.circular(20))),
                                               child: const Text(
-                                                "Admin",
+                                                "Employee",
                                                 style: TextStyle(
                                                     color: ThemeColor.primary,
                                                     fontSize: 15,
@@ -198,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               color: Colors.white,
                                             ),
                                             hint: Text(
-                                              "Rev: ${userData.revision}",
+                                              "Rev: ",
                                               style: GoogleFonts.ubuntu(
                                                   fontSize: 13,
                                                   color: ThemeColor.white),
@@ -229,11 +229,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             }).toList(),
                                             onChanged: (String? value) {
                                               // This is called when the user selects an item.
-                                              setState(() {
-                                                userData.revision = value!;
-                                              });
-                                              userData.updateRevision(
-                                                  userData.revision, context);
+                                              // setState(() {
+                                              //   userData.revision = value!;
+                                              // });
+                                              // userData.updateRevision(
+                                              //     userData.revision, context);
                                             },
                                           ),
                                         ),
@@ -248,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Column(
                                             children: [
                                               Text(
-                                                "Batch ${userData.batch}",
+                                                "Batch ${userData.accountCreationDate}",
                                                 style: GoogleFonts.ubuntu(
                                                     fontSize: 15,
                                                     fontWeight: FontWeight.w400,
@@ -260,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             height: 5,
                                           ),
                                           Text(
-                                            "Revision ${userData.revision}",
+                                            "Revision nulll",
                                             style: GoogleFonts.ubuntu(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w400,
@@ -276,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Center(
                                     child: Text(
-                                      "View",
+                                      "View users",
                                       style: GoogleFonts.ubuntu(
                                           fontSize: 13,
                                           color: ThemeColor.white),
@@ -314,7 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Lab Manual",
+                            "Cash Deposit",
                             style: GoogleFonts.ubuntu(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -325,10 +325,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: ThemeColor.secondary,
                                 borderRadius: BorderRadius.circular(20)),
                             child: Center(
-                              child: Text(
-                                "View",
-                                style: GoogleFonts.ubuntu(
-                                    fontSize: 13, color: ThemeColor.white),
+                              child: const Icon(
+                                Icons.arrow_forward,
+                                color: ThemeColor.white,
                               ),
                             ),
                           ),
@@ -361,7 +360,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Question Paper",
+                            "Cash Withdrawal",
                             style: GoogleFonts.ubuntu(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -372,10 +371,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: ThemeColor.secondary,
                                 borderRadius: BorderRadius.circular(20)),
                             child: Center(
-                              child: Text(
-                                "View",
-                                style: GoogleFonts.ubuntu(
-                                    fontSize: 13, color: ThemeColor.white),
+                              child: const Icon(
+                                Icons.arrow_forward,
+                                color: ThemeColor.white,
                               ),
                             ),
                           ),
@@ -418,10 +416,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: ThemeColor.secondary,
                                 borderRadius: BorderRadius.circular(20)),
                             child: Center(
-                              child: Text(
-                                "View",
-                                style: GoogleFonts.ubuntu(
-                                    fontSize: 13, color: ThemeColor.white),
+                              child: const Icon(
+                                Icons.arrow_forward,
+                                color: ThemeColor.white,
                               ),
                             ),
                           ),
@@ -430,7 +427,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                sb.height80
+                sb.height80,
               ],
             ),
           ),

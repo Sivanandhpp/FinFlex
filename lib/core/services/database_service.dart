@@ -5,6 +5,7 @@ import '../../main.dart';
 
 class DatabaseService {
   ErrorHandler errHandler = ErrorHandler();
+
   Future<UserData> getDatabaseUser(String uid) async {
     await dbReference.child('users/$uid').once().then(
           (value) => userData.snapshotToClass(uid, value.snapshot),
@@ -18,8 +19,7 @@ class DatabaseService {
       String email,
       String phoneNo,
       String password,
-      String batch,
-      String revision,
+      String accountCreationDate,
       String role,
       String profile,
       String status) {
@@ -30,8 +30,7 @@ class DatabaseService {
       'email': email,
       'phone': phoneNo,
       'password': password,
-      'batch': batch,
-      'revision': revision,
+      'date': accountCreationDate,
       'role': role,
       'profile': profile,
       'status': status
@@ -79,19 +78,19 @@ class DatabaseService {
       DateTime now = DateTime.now();
       String queryRef =
           "${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}";
-      String time =
+      String timequery =
           "${now.hour.toString().padLeft(2, "0")}:${now.minute.toString().padLeft(2, "0")}:${now.second.toString().padLeft(2, "0")}";
-      String date =
+      String datequery =
           "${now.day.toString().padLeft(2, "0")}/${now.month.toString().padLeft(2, "0")}/${now.year}";
       dbReference.child('queries/$queryRef').set({
         'subject': subject,
         'query': query,
         'uid': userData.userid,
         'name': userData.name,
-        'batch': userData.batch,
+        'date': userData.accountCreationDate,
         'phone': userData.phoneNo,
-        'date': date,
-        'time': time,
+        'datequery': datequery,
+        'timequery': timequery,
       });
     } catch (e) {
       errHandler.fromErrorCode(e, context);

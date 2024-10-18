@@ -7,7 +7,7 @@ import '../widgets/main_button.dart';
 import '../../core/globalvalues/theme_color.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -20,8 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _phoneNoController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  int _batch = DateTime.now().year;
-  String _revision = "2021";
+  final String _accountCreationDate = "${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().day}";
 
   @override
   Widget build(BuildContext context) {
@@ -206,23 +205,18 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                   
-                     
+
                       const SizedBox(height: 20),
                       MainButton(
                         text: 'Sign Up',
                         onTap: () async {
-                          if (_batch < 2021) {
-                            _revision = "2015";
-                          }
                           if (_formKey.currentState!.validate()) {
                             await authService.createUserWithEmailAndPassword(
                                 _nameController.text,
                                 _phoneNoController.text,
                                 _emailController.text,
                                 _passwordController.text,
-                                _batch.toString(),
-                                _revision,
+                                _accountCreationDate,
                                 context);
                             // ignore: use_build_context_synchronously
                             Navigator.pop(context);

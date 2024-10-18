@@ -48,8 +48,7 @@ class AuthService {
       String phoneNo,
       String email,
       String password,
-      String batch,
-      String revision,
+      String accountCreationDate,
       BuildContext context) async {
     // globals.userName = name;
     try {
@@ -60,7 +59,7 @@ class AuthService {
       credential.user!.linkWithPhoneNumber(phoneNo);
       credential.user!.updateDisplayName(name);
       userData.setUserData(credential.user!.uid, name, email, phoneNo, password,
-          batch, revision, 'user', 'null', 'active', true);
+          accountCreationDate, 'user', 'null', 'active', true);
       return _userFromFirebase(credential.user);
     } on auth.FirebaseAuthException catch (e) {
       errHandler.fromErrorCode(e, context);
