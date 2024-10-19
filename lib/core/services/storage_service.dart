@@ -35,6 +35,13 @@ class Storage {
     return results;
   }
 
+  Future<firebase_storage.ListResult> listUsers(
+  ) async {
+    firebase_storage.ListResult results =
+        await storage.ref('users').listAll();
+    return results;
+  }
+
   // Future<String> downloadURL(
   //   String pdfName,
   //   String semester,

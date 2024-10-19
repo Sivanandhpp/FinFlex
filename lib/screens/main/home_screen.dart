@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:finflex/screens/main/deposit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:finflex/main.dart';
 import 'package:finflex/screens/main/screen_profile.dart';
-import 'package:finflex/screens/widgets/popup_sem_select.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../core/globalvalues/sizedboxes.dart' as sb;
 import '../../core/globalvalues/theme_color.dart';
@@ -16,12 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> revision = [
-    '2015',
-    '2021',
-  ];
-
-  SemSelect semsel = SemSelect();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           'Welcome back',
                           style: GoogleFonts.ubuntu(
                             color: ThemeColor.black,
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
@@ -49,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           userData.name,
                           style: GoogleFonts.ubuntu(
                             color: ThemeColor.secondary,
-                            fontSize: 35,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -101,7 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 sb.height20,
                 GestureDetector(
-                  onTap: () => semsel.popupSemSelector("Syllabus", context),
+                  onTap: () {
+                    //TODO:
+                  },
                   child: Container(
                     width: double.infinity,
                     height: 200,
@@ -180,94 +176,35 @@ class _HomeScreenState extends State<HomeScreen> {
                                         : Container()
                                   ],
                                 ),
-                                userData.role == 'admin'
-                                    ? Container(
-                                        width: 140,
-                                        height: 50,
-                                        decoration: BoxDecoration(
-                                          color: ThemeColor.secondary,
-                                          borderRadius:
-                                              BorderRadius.circular(20),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "Batch ${userData.accountCreationDate}",
+                                          style: GoogleFonts.ubuntu(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w400,
+                                              color: ThemeColor.white),
                                         ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20),
-                                          child: DropdownButton(
-                                            underline: Container(
-                                              height: 0,
-                                              color: Colors.white,
-                                            ),
-                                            hint: Text(
-                                              "Rev: ",
-                                              style: GoogleFonts.ubuntu(
-                                                  fontSize: 13,
-                                                  color: ThemeColor.white),
-                                            ),
-                                            style: const TextStyle(
-                                                color: ThemeColor.white),
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            dropdownColor:
-                                                ThemeColor.scaffoldBgColor,
-                                            isExpanded: true,
-                                            icon: const Icon(
-                                              Icons.arrow_downward,
-                                              color: ThemeColor.white,
-                                            ),
-                                            items: revision
-                                                .map<DropdownMenuItem<String>>(
-                                                    (String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(
-                                                  "Revision: $value",
-                                                  style: GoogleFonts.ubuntu(
-                                                      color: ThemeColor.black),
-                                                ),
-                                              );
-                                            }).toList(),
-                                            onChanged: (String? value) {
-                                              // This is called when the user selects an item.
-                                              // setState(() {
-                                              //   userData.revision = value!;
-                                              // });
-                                              // userData.updateRevision(
-                                              //     userData.revision, context);
-                                            },
-                                          ),
-                                        ),
-                                      )
-                                    : Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Column(
-                                            children: [
-                                              Text(
-                                                "Batch ${userData.accountCreationDate}",
-                                                style: GoogleFonts.ubuntu(
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: ThemeColor.white),
-                                              ),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            "Revision nulll",
-                                            style: GoogleFonts.ubuntu(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w400,
-                                                color: ThemeColor.white),
-                                          ),
-                                        ],
-                                      ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "Revision nulll",
+                                      style: GoogleFonts.ubuntu(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w400,
+                                          color: ThemeColor.white),
+                                    ),
+                                  ],
+                                ),
                                 Container(
                                   width: 140,
                                   height: 50,
@@ -293,7 +230,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 sb.height20,
                 GestureDetector(
-                  onTap: () => semsel.popupSemSelector("Lab Manual", context),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DepositScreen(),
+                      ),
+                    );
+                  },
                   child: Container(
                     width: double.infinity,
                     height: 80,
@@ -338,8 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 sb.height10,
                 GestureDetector(
-                  onTap: () =>
-                      semsel.popupSemSelector("Question Paper", context),
+                  onTap: () {},
                   child: Container(
                     width: double.infinity,
                     height: 80,
@@ -384,7 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 sb.height10,
                 GestureDetector(
-                  onTap: () => semsel.popupSemSelector("Notes", context),
+                  onTap: () {},
                   child: Container(
                     width: double.infinity,
                     height: 80,

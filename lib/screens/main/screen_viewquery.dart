@@ -38,7 +38,7 @@ class _ViewQueryScreenState extends State<ViewQueryScreen> {
                         ),
                       ),
                       Text(
-                        "Student Queries",
+                        "User Queries",
                         style: GoogleFonts.ubuntu(
                           color: ThemeColor.black,
                           fontSize: 26,

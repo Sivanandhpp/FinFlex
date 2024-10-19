@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:finflex/screens/main/screen_query.dart';
-import 'user_navbar.dart' as user;
-import '../main/screen_about.dart';
+import 'package:finflex/screens/main/users_screen.dart';
+import 'package:finflex/screens/main/screen_viewquery.dart';
+import 'admin_navbar.dart' as admin;
 import '../main/screen_notifications.dart';
-import '../main/screen_home.dart';
+import '../main/home_screen.dart';
+import '../main/screen_upload.dart';
 
-class UserDashBoard extends StatelessWidget {
-  UserDashBoard({Key? key}) : super(key: key);
+class AdminDashBoard extends StatelessWidget {
+  AdminDashBoard({Key? key}) : super(key: key);
   final _pages = [
     const HomeScreen(),
     const ScreenNotification(),
-    const QueryScreen(),
-    ScreenAbout(topBar: false),
+    const ScreenUpload(),
+    ViewUsers(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: ValueListenableBuilder(
-          valueListenable: user.indexChangeNotifier,
+          valueListenable: admin.indexChangeNotifier,
           builder: (context, int index, _) {
             return _pages[index];
           },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: const user.UserNavBar(),
+      floatingActionButton: const admin.AdminNavBar(),
       // bottomNavigationBar: const BottomNavBar(),
     );
   }
