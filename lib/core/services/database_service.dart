@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:finflex/core/globalvalues/user_data.dart';
 import 'package:finflex/core/services/error_handler.dart';
@@ -22,7 +23,8 @@ class DatabaseService {
       String accountCreationDate,
       String role,
       String profile,
-      String status) {
+      String status,
+      double balance) {
     final userReferance = dbReference.child('users/$uid');
 
     userReferance.set({
@@ -33,7 +35,8 @@ class DatabaseService {
       'date': accountCreationDate,
       'role': role,
       'profile': profile,
-      'status': status
+      'status': status,
+      'balance': balance
     });
   }
 
@@ -87,10 +90,73 @@ class DatabaseService {
         'query': query,
         'uid': userData.userid,
         'name': userData.name,
-        'date': userData.accountCreationDate,
+        // 'date': userData.accountCreationDate,
         'phone': userData.phoneNo,
         'datequery': datequery,
         'timequery': timequery,
+      });
+    } catch (e) {
+      errHandler.fromErrorCode(e, context);
+    }
+  }
+
+  Future<void> addMoney(
+      double amount, String receiverUid, BuildContext context) async {
+    try {
+      //Main
+      DateTime now = DateTime.now();
+      final mainTransactionRef = dbReference.child(
+          "transactions/${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}");
+      String timeAddMoney =
+          "${now.hour.toString().padLeft(2, "0")}:${now.minute.toString().padLeft(2, "0")}:${now.second.toString().padLeft(2, "0")}";
+      String dateAddMoney =
+          "${now.day.toString().padLeft(2, "0")}/${now.month.toString().padLeft(2, "0")}/${now.year}";
+
+      mainTransactionRef.set({
+        'name': userData.name,
+        'data': dateAddMoney,
+        'date': timeAddMoney,
+        'receiverUid': receiverUid,
+        'senderUid': userData.userid,
+        'amount': amount,
+      });
+
+      //Sender
+      double updatedAmount = userData.balance - amount;
+      dbReference.child('users/${userData.userid}/balance').set(updatedAmount);
+
+      final senderTransactionRef =
+          dbReference.child('users/${userData.userid}/transactions');
+      senderTransactionRef
+          .child(
+              "${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}")
+          .set({
+        'name': userData.name,
+        'data': dateAddMoney,
+        'date': timeAddMoney,
+        'sent': true,
+        'receiverUid': receiverUid,
+        'senderUid': userData.userid,
+        'amount': amount,
+      });
+
+      //Receiver
+      // double senderAmnt = 0;
+      // final senderSnap = dbReference.child('users/${userData.userid}/balance').get();
+      // var temps = senderSnap.;
+      final receiverTransactionRef =
+          dbReference.child('users/$receiverUid/transactions');
+      receiverTransactionRef
+          .child(
+              "${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}")
+          .set({
+        'name': userData.name,
+        'data': dateAddMoney,
+        'date': timeAddMoney,
+        'sent': false,
+        'receiverUid': receiverUid,
+        'senderUid': userData.userid,
+        'amount': amount,
       });
     } catch (e) {
       errHandler.fromErrorCode(e, context);

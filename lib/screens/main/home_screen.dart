@@ -228,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                sb.height20,
+                sb.height10,
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -240,7 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: Container(
                     width: double.infinity,
-                    height: 80,
+                    height: 70,
                     decoration: BoxDecoration(
                       boxShadow: const [
                         BoxShadow(
@@ -253,7 +253,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -264,7 +265,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Container(
                             width: 100,
-                            height: 50,
                             decoration: BoxDecoration(
                                 color: ThemeColor.secondary,
                                 borderRadius: BorderRadius.circular(20)),
@@ -285,7 +285,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {},
                   child: Container(
                     width: double.infinity,
-                    height: 80,
+                    height: 70,
                     decoration: BoxDecoration(
                       boxShadow: const [
                         BoxShadow(
@@ -298,7 +298,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -309,7 +310,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Container(
                             width: 100,
-                            height: 50,
                             decoration: BoxDecoration(
                                 color: ThemeColor.secondary,
                                 borderRadius: BorderRadius.circular(20)),
@@ -330,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {},
                   child: Container(
                     width: double.infinity,
-                    height: 80,
+                    height: 70,
                     decoration: BoxDecoration(
                       boxShadow: const [
                         BoxShadow(
@@ -343,7 +343,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -354,7 +355,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Container(
                             width: 100,
-                            height: 50,
                             decoration: BoxDecoration(
                                 color: ThemeColor.secondary,
                                 borderRadius: BorderRadius.circular(20)),
@@ -379,3 +379,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

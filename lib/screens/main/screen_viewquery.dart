@@ -93,13 +93,13 @@ class _ViewQueryScreenState extends State<ViewQueryScreen> {
                                         fontSize: 15,
                                         color: ThemeColor.primary),
                                   ),
-                                  Text(
-                                    "Batch: ${snapshot.child('batch').value.toString()}",
-                                    style: GoogleFonts.ubuntu(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 15,
-                                    ),
-                                  ),
+                                  // Text(
+                                  //   "Batch: ${snapshot.child('batch').value.toString()}",
+                                  //   style: GoogleFonts.ubuntu(
+                                  //     fontWeight: FontWeight.normal,
+                                  //     fontSize: 15,
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                               sb.height10,

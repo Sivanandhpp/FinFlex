@@ -391,11 +391,13 @@ class _DepositScreenState extends State<DepositScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                HomeScreen()));
+                                    dbService.addMoney(100.0,
+                                        snapshot.key.toString(), context);
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             HomeScreen()));
                                   },
                                   child: Container(
                                     width: 55,

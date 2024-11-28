@@ -12,6 +12,7 @@ class UserData {
       userid,
       profile,
       status;
+  late double balance;
   SharedPreferencesService spService = SharedPreferencesService();
   DatabaseService dbService = DatabaseService();
 
@@ -29,6 +30,7 @@ class UserData {
     role = snapshot.child('role').value;
     profile = snapshot.child('profile').value;
     status = snapshot.child('status').value;
+    // balance = snapshot.child('balance').value;
     // spService.setSharedprefUser(
     //     uid, name, email, phoneNo, password, batch, revision, role);
   }
@@ -53,6 +55,7 @@ class UserData {
     role = setrole;
     profile = setprofile;
     status = setstatus;
+    balance = 0.0;
 
     if (setData) {
       //SET DATA TO SHARED PREFERANCES WHILE SIGN UP
@@ -61,7 +64,7 @@ class UserData {
 
       //SET DATA TO REALTIME DATABASE WHILE SIGN UP
       dbService.setDatabaseUser(uid, setname, setemail, setphoneNo, setpassword,
-          setAccountCreationDate, setrole, profile, status);
+          setAccountCreationDate, setrole, profile, status, balance);
     }
   }
 }
