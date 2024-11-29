@@ -103,7 +103,7 @@ class ScreenAbout extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            'DEPARTMENT OF',
+                            'Jain University',
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -111,7 +111,7 @@ class ScreenAbout extends StatelessWidget {
                                     GoogleFonts.odorMeanChey().fontFamily),
                           ),
                           Text(
-                            'COMPUTER HARDWARE ENGINEERING ',
+                            'MCA - Students',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -119,7 +119,7 @@ class ScreenAbout extends StatelessWidget {
                                     GoogleFonts.odorMeanChey().fontFamily),
                           ),
                           Text(
-                            'MODEL POLYTECHNIC COLLEGE, VADAKARA ',
+                            'Data Structures Project',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -128,97 +128,97 @@ class ScreenAbout extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Text(
-                        'CONTACT LINKS',
-                        style: GoogleFonts.ubuntu(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: ThemeColor.grey,
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          // InkWell(
-                          //   child: const FaIcon(
-                          //     FontAwesomeIcons.whatsapp,
-                          //     size: 35,
-                          //     color: ThemeColor.waGreen,
-                          //   ),
-                          //   onTap: () {},
-                          // ),
-                          InkWell(
-                            child: const FaIcon(
-                              FontAwesomeIcons.instagram,
-                              size: 35,
-                              color: ThemeColor.instaPurpleRed,
-                            ),
-                            onTap: () {
-                              launchUrl(
-                                  mode:
-                                      LaunchMode.externalNonBrowserApplication,
-                                  Uri(
-                                      scheme: "https",
-                                      host: "instagram.com",
-                                      path: "modelpolytechniccollegevdk"));
-                            },
-                          ),
-                          InkWell(
-                            child: const FaIcon(
-                              FontAwesomeIcons.facebook,
-                              size: 35,
-                              color: ThemeColor.primary,
-                            ),
-                            onTap: () {
-                              launchUrl(
-                                  mode:
-                                      LaunchMode.externalNonBrowserApplication,
-                                  Uri(
-                                      scheme: "https",
-                                      host: "facebook.com",
-                                      path: "mptcv"));
-                            },
-                          ),
-                          InkWell(
-                            child: const FaIcon(
-                              FontAwesomeIcons.linkedin,
-                              size: 35,
-                              color: ThemeColor.primary,
-                            ),
-                            onTap: () {
-                              launchUrl(
-                                  mode: LaunchMode.externalApplication,
-                                  Uri(
-                                      scheme: "https",
-                                      host: "linkedin.com",
-                                      path:
-                                          "in/model-polytechnic-college-vadakara-9327a225a"));
-                            },
-                          ),
-                          // InkWell(
-                          //   child: const FaIcon(
-                          //     FontAwesomeIcons.youtube,
-                          //     size: 35,
-                          //     color: ThemeColor.ytRed,
-                          //   ),
-                          //   onTap: () {},
-                          // ),
-                          InkWell(
-                            child: const FaIcon(
-                              FontAwesomeIcons.globe,
-                              size: 35,
-                              color: ThemeColor.instaPurpleRed,
-                            ),
-                            onTap: () {
-                              launchUrl(
-                                  mode: LaunchMode.externalApplication,
-                                  Uri(
-                                      scheme: "http",
-                                      host: "mptvadakara.ihrd.ac.in"));
-                            },
-                          ),
-                        ],
-                      )
+                      // Text(
+                      //   'CONTACT LINKS',
+                      //   style: GoogleFonts.ubuntu(
+                      //     fontSize: 12,
+                      //     fontWeight: FontWeight.bold,
+                      //     color: ThemeColor.grey,
+                      //   ),
+                      // ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //   children: [
+                      //     // InkWell(
+                      //     //   child: const FaIcon(
+                      //     //     FontAwesomeIcons.whatsapp,
+                      //     //     size: 35,
+                      //     //     color: ThemeColor.waGreen,
+                      //     //   ),
+                      //     //   onTap: () {},
+                      //     // ),
+                      //     InkWell(
+                      //       child: const FaIcon(
+                      //         FontAwesomeIcons.instagram,
+                      //         size: 35,
+                      //         color: ThemeColor.instaPurpleRed,
+                      //       ),
+                      //       onTap: () {
+                      //         launchUrl(
+                      //             mode:
+                      //                 LaunchMode.externalNonBrowserApplication,
+                      //             Uri(
+                      //                 scheme: "https",
+                      //                 host: "instagram.com",
+                      //                 path: "modelpolytechniccollegevdk"));
+                      //       },
+                      //     ),
+                      //     InkWell(
+                      //       child: const FaIcon(
+                      //         FontAwesomeIcons.facebook,
+                      //         size: 35,
+                      //         color: ThemeColor.primary,
+                      //       ),
+                      //       onTap: () {
+                      //         launchUrl(
+                      //             mode:
+                      //                 LaunchMode.externalNonBrowserApplication,
+                      //             Uri(
+                      //                 scheme: "https",
+                      //                 host: "facebook.com",
+                      //                 path: "mptcv"));
+                      //       },
+                      //     ),
+                      //     InkWell(
+                      //       child: const FaIcon(
+                      //         FontAwesomeIcons.linkedin,
+                      //         size: 35,
+                      //         color: ThemeColor.primary,
+                      //       ),
+                      //       onTap: () {
+                      //         launchUrl(
+                      //             mode: LaunchMode.externalApplication,
+                      //             Uri(
+                      //                 scheme: "https",
+                      //                 host: "linkedin.com",
+                      //                 path:
+                      //                     "in/model-polytechnic-college-vadakara-9327a225a"));
+                      //       },
+                      //     ),
+                      //     // InkWell(
+                      //     //   child: const FaIcon(
+                      //     //     FontAwesomeIcons.youtube,
+                      //     //     size: 35,
+                      //     //     color: ThemeColor.ytRed,
+                      //     //   ),
+                      //     //   onTap: () {},
+                      //     // ),
+                      //     InkWell(
+                      //       child: const FaIcon(
+                      //         FontAwesomeIcons.globe,
+                      //         size: 35,
+                      //         color: ThemeColor.instaPurpleRed,
+                      //       ),
+                      //       onTap: () {
+                      //         launchUrl(
+                      //             mode: LaunchMode.externalApplication,
+                      //             Uri(
+                      //                 scheme: "http",
+                      //                 host: "mptvadakara.ihrd.ac.in"));
+                      //       },
+                      //     ),
+                      //   ],
+                      // )
                     ],
                   ),
                 ),
@@ -240,92 +240,6 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ],
                     ),
-                    sb.height10,
-                    Container(
-                      width: double.infinity,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                              color: ThemeColor.shadow,
-                              blurRadius: 100,
-                              spreadRadius: 1,
-                              offset: Offset(0, 10)),
-                        ],
-                        color: ThemeColor.white,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: const SizedBox(
-                                    height: 70.0,
-                                    width: 70.0,
-                                    child: Image(
-                                      image:
-                                          AssetImage('assets/images/amal.jpeg'),
-                                    ),
-                                  ),
-                                ),
-                                sb.width20,
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      "Amal Raj",
-                                      style: GoogleFonts.ubuntu(
-                                          color: ThemeColor.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "Software Developer",
-                                      style: GoogleFonts.ubuntu(
-                                          color: ThemeColor.grey,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                launchUrl(
-                                    mode: LaunchMode.externalApplication,
-                                    Uri(
-                                        scheme: "https",
-                                        host: "amalrajkp18.github.io"));
-                              },
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.circular(10.0), //or 15.0
-                                child: Container(
-                                  height: 50.0,
-                                  width: 50.0,
-                                  color: ThemeColor.primary,
-                                  child: const Icon(FontAwesomeIcons.bolt,
-                                      color: Colors.white, size: 30.0),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    sb.height10,
                     Container(
                       width: double.infinity,
                       height: 100,
@@ -366,7 +280,7 @@ class ScreenAbout extends StatelessWidget {
                                       height: 15,
                                     ),
                                     Text(
-                                      "Siva Nandh",
+                                      "Sivanandh",
                                       style: GoogleFonts.ubuntu(
                                           color: ThemeColor.black,
                                           fontSize: 20,
@@ -376,7 +290,7 @@ class ScreenAbout extends StatelessWidget {
                                       height: 5,
                                     ),
                                     Text(
-                                      "Software Engineer I",
+                                      "JUKPG24MCA11526",
                                       style: GoogleFonts.ubuntu(
                                           color: ThemeColor.grey,
                                           fontSize: 15,

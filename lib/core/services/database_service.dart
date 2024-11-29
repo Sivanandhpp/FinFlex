@@ -102,6 +102,7 @@ class DatabaseService {
 
   Future<void> addMoney(
       double amount, String receiverUid, BuildContext context) async {
+    print("money");
     try {
       //Main
       DateTime now = DateTime.now();
@@ -122,8 +123,13 @@ class DatabaseService {
       });
 
       //Sender
-      double updatedAmount = userData.balance - amount;
-      dbReference.child('users/${userData.userid}/balance').set(updatedAmount);
+      DataSnapshot senderBalance =
+          await dbReference.child("users/${userData.userid}/balance").get();
+      String senderBalanceDB = senderBalance.value.toString();
+
+      dbReference
+          .child('users/${userData.userid}/balance')
+          .set(double.parse(senderBalanceDB) - amount);
 
       final senderTransactionRef =
           dbReference.child('users/${userData.userid}/transactions');
@@ -141,9 +147,14 @@ class DatabaseService {
       });
 
       //Receiver
-      // double senderAmnt = 0;
-      // final senderSnap = dbReference.child('users/${userData.userid}/balance').get();
-      // var temps = senderSnap.;
+      DataSnapshot receiverBalance =
+          await dbReference.child("users/$receiverUid/balance").get();
+      String receiverBalanceDB = receiverBalance.value.toString();
+
+      dbReference
+          .child('users/$receiverUid/balance')
+          .set(double.parse(receiverBalanceDB) + amount);
+
       final receiverTransactionRef =
           dbReference.child('users/$receiverUid/transactions');
       receiverTransactionRef

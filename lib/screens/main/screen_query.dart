@@ -58,7 +58,7 @@ class _QueryScreenState extends State<QueryScreen> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                    "Questions, concerns or requests you may have regarding the application and academic matters, including requests for profile changes.",
+                    "Questions, concerns or requests you may have regarding the application and banking matters, including requests for profile changes.",
                     style: GoogleFonts.ubuntu(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -202,7 +202,7 @@ class _QueryScreenState extends State<QueryScreen> {
                       ),
                     ),
               sb.height20,
-              Text("Queries will be reviewed by faculties.",
+              Text("Queries will be reviewed by employees.",
                   style: GoogleFonts.ubuntu(
                       fontSize: 15,
                       fontWeight: FontWeight.normal,

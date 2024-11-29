@@ -390,8 +390,8 @@ class _DepositScreenState extends State<DepositScreen> {
                                   ],
                                 ),
                                 GestureDetector(
-                                  onTap: () {
-                                    dbService.addMoney(100.0,
+                                  onTap: () async{
+                                   await dbService.addMoney(100.0,
                                         snapshot.key.toString(), context);
                                     // Navigator.push(
                                     //     context,
