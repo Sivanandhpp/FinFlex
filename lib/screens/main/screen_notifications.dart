@@ -54,17 +54,31 @@ class _ScreenNotificationState extends State<ScreenNotification> {
         ],
       );
     }
-    return Row(
-      children: [
-        Text(
-          'Notifications',
-          style: GoogleFonts.ubuntu(
-            color: ThemeColor.black,
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            padding:
+                const EdgeInsets.only(left: 0, right: 10, top: 10, bottom: 10),
+            child: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.black,
+            ),
           ),
-        ),
-      ],
+          Text(
+            "Notifications",
+            style: GoogleFonts.ubuntu(
+              color: ThemeColor.black,
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

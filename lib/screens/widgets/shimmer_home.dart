@@ -24,6 +24,15 @@ class HomeShimmer extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: ThemeColor.white,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                          sb.width5,
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -53,7 +62,7 @@ class HomeShimmer extends StatelessWidget {
                             width: 50,
                             decoration: BoxDecoration(
                               color: ThemeColor.white,
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                           )
                         ],
