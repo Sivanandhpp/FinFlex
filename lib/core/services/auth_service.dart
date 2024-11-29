@@ -59,7 +59,7 @@ class AuthService {
       credential.user!.linkWithPhoneNumber(phoneNo);
       credential.user!.updateDisplayName(name);
       userData.setUserData(credential.user!.uid, name, email, phoneNo, password,
-          accountCreationDate, 'user', 'null', 'active', true);
+          accountCreationDate, 'user', 'null', 'active',0.00, true);
       return _userFromFirebase(credential.user);
     } on auth.FirebaseAuthException catch (e) {
       errHandler.fromErrorCode(e, context);

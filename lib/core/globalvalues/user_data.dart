@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/core/services/sharedpref_service.dart';
@@ -30,7 +32,8 @@ class UserData {
     role = snapshot.child('role').value;
     profile = snapshot.child('profile').value;
     status = snapshot.child('status').value;
-    // balance = snapshot.child('balance').value;
+    balance = snapshot.child('balance').value + 0.00;
+
     // spService.setSharedprefUser(
     //     uid, name, email, phoneNo, password, batch, revision, role);
   }
@@ -45,6 +48,7 @@ class UserData {
       String setrole,
       String setprofile,
       String setstatus,
+      double setbalance,
       bool setData) {
     userid = uid;
     name = setname;
@@ -55,7 +59,7 @@ class UserData {
     role = setrole;
     profile = setprofile;
     status = setstatus;
-    balance = 0.0;
+    balance = setbalance;
 
     if (setData) {
       //SET DATA TO SHARED PREFERANCES WHILE SIGN UP

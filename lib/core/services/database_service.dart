@@ -102,7 +102,6 @@ class DatabaseService {
 
   Future<void> addMoney(
       double amount, String receiverUid, BuildContext context) async {
-    print("money");
     try {
       //Main
       DateTime now = DateTime.now();
