@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:finflex/core/globalvalues/device_details.dart';
 import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:finflex/core/globalvalues/user_data.dart';
 import 'package:finflex/core/services/auth_service.dart';
@@ -15,6 +18,8 @@ late DatabaseReference dbReference;
 final userData = UserData();
 
 void main() async {
+ 
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   spInstance = await SharedPreferences.getInstance();

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:finflex/screens/main/deposit_screen.dart';
 import 'package:finflex/screens/main/screen_notifications.dart';
 import 'package:finflex/screens/main/screen_transactions.dart';
+import 'package:finflex/screens/main/screen_viewcard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -133,12 +134,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontWeight: FontWeight.w600,
                       color: ThemeColor.grey),
                 ),
-                Text(
-                  "₹${userData.balance.toString()}",
-                  style: GoogleFonts.numans(
-                      fontSize: 55,
-                      fontWeight: FontWeight.bold,
-                      color: ThemeColor.black),
+                Shimmer.fromColors(
+                  direction: ShimmerDirection.ltr,
+                  baseColor: ThemeColor.black,
+                  period: const Duration(milliseconds: 3000),
+                  highlightColor: ThemeColor.lightBlue,
+                  child: Text(
+                    "₹${userData.balance.toString()}",
+                    style: GoogleFonts.ibmPlexSans(
+                        fontSize: 55,
+                        fontWeight: FontWeight.w800,
+                        color: ThemeColor.black),
+                  ),
                 ),
                 sb.height20,
                 Row(
@@ -183,141 +190,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 sb.height20,
-                GestureDetector(
-                  onTap: () {
-                    //TODO:
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                            color: ThemeColor.shadow,
-                            blurRadius: 100,
-                            spreadRadius: 1,
-                            offset: Offset(0, 10)),
-                      ],
-                      color: ThemeColor.primary,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          right: -1,
-                          bottom: -1,
-                          child: SizedBox(
-                            width: 250,
-                            child: Center(
-                                child: Image.asset(
-                              'assets/images/study.png',
-                              fit: BoxFit.cover,
-                            )),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "FinFlex",
-                                      style: GoogleFonts.ubuntu(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
-                                          color: ThemeColor.white),
-                                    ),
-                                    userData.role == 'admin'
-                                        ? Shimmer.fromColors(
-                                            direction: ShimmerDirection.ltr,
-                                            baseColor: ThemeColor.white,
-                                            highlightColor:
-                                                ThemeColor.lightBlue,
-                                            child: Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 8,
-                                                      vertical: 3),
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: ThemeColor.primary,
-                                                      width: 2),
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                          Radius.circular(20))),
-                                              child: const Text(
-                                                "Employee",
-                                                style: TextStyle(
-                                                    color: ThemeColor.primary,
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ),
-                                          )
-                                        : Container()
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "Batch ${userData.accountCreationDate}",
-                                          style: GoogleFonts.ubuntu(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w400,
-                                              color: ThemeColor.white),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "Revision nulll",
-                                      style: GoogleFonts.ubuntu(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w400,
-                                          color: ThemeColor.white),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  width: 140,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      color: ThemeColor.secondary,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Center(
-                                    child: Text(
-                                      "View users",
-                                      style: GoogleFonts.ubuntu(
-                                          fontSize: 13,
-                                          color: ThemeColor.white),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                sb.height10,
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -423,7 +295,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 sb.height10,
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ViewCardScreen(),
+                      ),
+                    );
+                  },
                   child: Container(
                     width: double.infinity,
                     height: 70,
@@ -445,7 +324,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Notes",
+                            "View Card",
                             style: GoogleFonts.ubuntu(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
