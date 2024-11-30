@@ -26,12 +26,30 @@ class _ScreenNotificationState extends State<ScreenNotification> {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'Notifications',
-            style: GoogleFonts.ubuntu(
-              color: ThemeColor.black,
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(
+                      left: 0, right: 10, top: 10, bottom: 10),
+                  child: const Icon(
+                    Icons.arrow_back_ios_new,
+                    color: Colors.black,
+                  ),
+                ),
+                Text(
+                  "Notifications",
+                  style: GoogleFonts.ubuntu(
+                    color: ThemeColor.black,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
           InkWell(
@@ -53,6 +71,37 @@ class _ScreenNotificationState extends State<ScreenNotification> {
           ),
         ],
       );
+
+      // Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //   children: [
+      //     Text(
+      //       'Notifications',
+      //       style: GoogleFonts.ubuntu(
+      //         color: ThemeColor.black,
+      //         fontSize: 26,
+      //         fontWeight: FontWeight.bold,
+      //       ),
+      //     ),
+      //     InkWell(
+      //       child: Container(
+      //         padding: const EdgeInsets.all(12),
+      //         child: const Icon(
+      //           FontAwesomeIcons.plus,
+      //           size: 35,
+      //           color: ThemeColor.black,
+      //         ),
+      //       ),
+      //       onTap: () {
+      //         Navigator.push(
+      //           context,
+      //           MaterialPageRoute(
+      //               builder: (context) => const AddNotification()),
+      //         );
+      //       },
+      //     ),
+      //   ],
+      // );
     }
     return GestureDetector(
       onTap: () {
@@ -202,7 +251,7 @@ class _ScreenNotificationState extends State<ScreenNotification> {
             child: Column(
               children: [
                 headWithPower(),
-                // sb.height10,
+                sb.height10,
                 FirebaseAnimatedList(
                   query: dbReference.child("notifications"),
                   physics: const NeverScrollableScrollPhysics(),
@@ -225,9 +274,9 @@ class _ScreenNotificationState extends State<ScreenNotification> {
                             boxShadow: const [
                               BoxShadow(
                                   color: ThemeColor.shadow,
-                                  blurRadius: 10,
-                                  spreadRadius: 0.1,
-                                  offset: Offset(0, 10)),
+                                  blurRadius: 100,
+                                  spreadRadius: 0.01,
+                                  offset: Offset(1, 1)),
                             ],
                             color: ThemeColor.white,
                             borderRadius: BorderRadius.circular(20),

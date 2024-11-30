@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                           },
                         ),
-                        sb.width5,
+                        sb.width10,
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0), //or 15.0
+                        borderRadius: BorderRadius.circular(30.0), //or 15.0
                         child: Container(
                           height: 50.0,
                           width: 50.0,
