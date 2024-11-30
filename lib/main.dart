@@ -1,6 +1,4 @@
-import 'dart:ui';
 
-import 'package:finflex/core/globalvalues/device_details.dart';
 import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:finflex/core/globalvalues/user_data.dart';
 import 'package:finflex/core/services/auth_service.dart';

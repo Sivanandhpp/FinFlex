@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:finflex/main.dart';
 import 'package:finflex/screens/main/screen_addnotifi.dart';
 import 'package:finflex/screens/widgets/image_viewer.dart';
-import 'package:finflex/screens/widgets/pdf_viewer.dart';
 import '../../core/globalvalues/sizedboxes.dart' as sb;
 import '../../core/globalvalues/theme_color.dart';
 import '../../core/services/database_service.dart';

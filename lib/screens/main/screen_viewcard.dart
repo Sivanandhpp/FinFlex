@@ -2,7 +2,6 @@ import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:finflex/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shimmer/shimmer.dart';
 import 'dart:math' as math;
 import '../../core/globalvalues/sizedboxes.dart' as sb;
 

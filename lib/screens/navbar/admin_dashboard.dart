@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:finflex/screens/main/users_screen.dart';
-import 'package:finflex/screens/main/screen_viewquery.dart';
 import 'admin_navbar.dart' as admin;
 import '../main/screen_notifications.dart';
 import '../main/home_screen.dart';
 import '../main/screen_upload.dart';
 
 class AdminDashBoard extends StatelessWidget {
-  AdminDashBoard({Key? key}) : super(key: key);
+  AdminDashBoard({super.key});
   final _pages = [
     const HomeScreen(),
     const ScreenNotification(),
