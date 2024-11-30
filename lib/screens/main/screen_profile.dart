@@ -135,7 +135,7 @@ class _ScreenProfileState extends State<ScreenProfile> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(20))),
                               child: const Text(
-                                "Admin",
+                                "Employee",
                                 style: TextStyle(
                                     color: ThemeColor.primary,
                                     fontSize: 15,
@@ -152,7 +152,7 @@ class _ScreenProfileState extends State<ScreenProfile> {
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(20))),
                             child: const Text(
-                              "User/Student",
+                              "FinFlex",
                               style: TextStyle(
                                   color: ThemeColor.black,
                                   fontSize: 15,
@@ -288,7 +288,25 @@ class _ScreenProfileState extends State<ScreenProfile> {
                 ),
                 sb.height10,
                 Text(
-                  "Batch: ${userData.accountCreationDate} | Revision: dd",
+                  "Account Number: 333366${userData.phoneNo}",
+                  style: GoogleFonts.ubuntu(
+                    color: ThemeColor.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+                sb.height10,
+                Text(
+                  "Account Created on: ${userData.accountCreationDate}",
+                  style: GoogleFonts.ubuntu(
+                    color: ThemeColor.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+                sb.height10,
+                Text(
+                  "Account Status: ${userData.status}",
                   style: GoogleFonts.ubuntu(
                     color: ThemeColor.black,
                     fontSize: 20,

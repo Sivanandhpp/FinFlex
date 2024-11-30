@@ -7,6 +7,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../core/globalvalues/sizedboxes.dart' as sb;
 
 class TransactionsScreen extends StatefulWidget {
@@ -19,6 +20,12 @@ class TransactionsScreen extends StatefulWidget {
 class _TransactionsScreenState extends State<TransactionsScreen> {
   DatabaseService dbService = DatabaseService();
   @override
+  void initState() {
+    super.initState();
+    dbService.getDatabaseUser(userData.userid);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -29,6 +36,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
             children: [
               GestureDetector(
                 onTap: () {
+                  dbService.getDatabaseUser(userData.userid);
                   Navigator.pop(context);
                 },
                 child: Row(
@@ -61,13 +69,43 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     fontWeight: FontWeight.w600,
                     color: ThemeColor.grey),
               ),
-              Text(
-                "₹${userData.balance.toString()}",
-                style: GoogleFonts.numans(
-                    fontSize: 55,
-                    fontWeight: FontWeight.bold,
-                    color: ThemeColor.black),
+              FirebaseAnimatedList(
+                query: dbReference.child('users/${userData.userid}'),
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                defaultChild: const Center(
+                  child: CircularProgressIndicator(
+                    color: ThemeColor.primary,
+                  ),
+                ),
+                itemBuilder: (context, snapshot, animation, index) {
+                  return Column(
+                    children: [
+                      if (snapshot.key == 'balance')
+                        Shimmer.fromColors(
+                          direction: ShimmerDirection.ltr,
+                          baseColor: ThemeColor.black,
+                          period: const Duration(milliseconds: 3000),
+                          highlightColor: ThemeColor.lightBlue,
+                          child: Text(
+                            "₹${snapshot.child('balance').value.toString()}",
+                            style: GoogleFonts.ibmPlexSans(
+                                fontSize: 55,
+                                fontWeight: FontWeight.w600,
+                                color: ThemeColor.black),
+                          ),
+                        ),
+                    ],
+                  );
+                },
               ),
+              // Text(
+              //   "₹${userData.balance.toString()}",
+              //   style: GoogleFonts.numans(
+              //       fontSize: 55,
+              //       fontWeight: FontWeight.bold,
+              //       color: ThemeColor.black),
+              // ),
               sb.height20,
               FirebaseAnimatedList(
                 query:
@@ -124,10 +162,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                               ),
                                             )
                                           : Text(
-                                              snapshot
-                                                  .child('name')
-                                                  .value
-                                                  .toString(),
+                                              "From ${snapshot.child('name').value.toString()}",
                                               style: GoogleFonts.ubuntu(
                                                 color: ThemeColor.black,
                                                 fontSize: 16,
@@ -149,7 +184,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                       //   height: 2,
                                       // ),
                                       Text(
-                                        "${snapshot.child('data').value.toString()} at ${snapshot.child('date').value.toString()}",
+                                        "${snapshot.child('date').value.toString()} at ${snapshot.child('time').value.toString()}",
                                         style: GoogleFonts.ubuntu(
                                           color: ThemeColor.black,
                                           fontSize: 16,

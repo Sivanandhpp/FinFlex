@@ -49,7 +49,7 @@ class IntroScreen extends StatelessWidget {
                     ),
                     sb.height10,
                     Text(
-                      "Never a better time than now to start!",
+                      "Never a better time than now to start banking with us!",
                       style: TextStyle(
                         color: ThemeColor.purpleBG,
                         fontSize: 14,

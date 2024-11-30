@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/screens/main/deposit_screen.dart';
 import 'package:finflex/screens/main/screen_notifications.dart';
 import 'package:finflex/screens/main/screen_transactions.dart';
 import 'package:finflex/screens/main/screen_viewcard.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +12,7 @@ import 'package:finflex/main.dart';
 import 'package:finflex/screens/main/screen_profile.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../core/globalvalues/sizedboxes.dart' as sb;
+import 'dart:math' as math;
 import '../../core/globalvalues/theme_color.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,15 +24,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    super.initState();
+    DatabaseService dbService = DatabaseService();
+    dbService.getDatabaseUser(userData.userid);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                Row(
+          child: Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 20.0, right: 20.0, top: 40.0),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -125,229 +136,296 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                sb.height20,
-                sb.height10,
-                Text(
-                  "Available Balance",
-                  style: GoogleFonts.ubuntu(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: ThemeColor.grey),
-                ),
-                Shimmer.fromColors(
-                  direction: ShimmerDirection.ltr,
-                  baseColor: ThemeColor.black,
-                  period: const Duration(milliseconds: 3000),
-                  highlightColor: ThemeColor.lightBlue,
-                  child: Text(
-                    "₹${userData.balance.toString()}",
-                    style: GoogleFonts.ibmPlexSans(
-                        fontSize: 55,
-                        fontWeight: FontWeight.w800,
-                        color: ThemeColor.black),
+              ),
+              sb.height20,
+              sb.height10,
+              Text(
+                "Available Balance",
+                style: GoogleFonts.ubuntu(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: ThemeColor.grey),
+              ),
+              FirebaseAnimatedList(
+                query: dbReference.child('users/${userData.userid}'),
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                defaultChild: const Center(
+                  child: CircularProgressIndicator(
+                    color: ThemeColor.primary,
                   ),
                 ),
-                sb.height20,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        height: 40,
-                        width: 150,
-                        decoration: BoxDecoration(
-                            color: ThemeColor.secondary,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Center(
-                            child: Text(
-                          "Transfer",
-                          style: GoogleFonts.ubuntu(
-                            color: ThemeColor.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
+                itemBuilder: (context, snapshot, animation, index) {
+                  return Column(
+                    children: [
+                      if (snapshot.key == 'balance')
+                        Shimmer.fromColors(
+                          direction: ShimmerDirection.ltr,
+                          baseColor: ThemeColor.black,
+                          period: const Duration(milliseconds: 3000),
+                          highlightColor: ThemeColor.lightBlue,
+                          child: Text(
+                            "₹${snapshot.child('balance').value.toString()}",
+                            style: GoogleFonts.ibmPlexSans(
+                                fontSize: 55,
+                                fontWeight: FontWeight.w600,
+                                color: ThemeColor.black),
                           ),
-                        )),
-                      ),
-                    ),
-                    sb.width20,
-                    Container(
+                        ),
+                    ],
+                  );
+                },
+              ),
+              // Shimmer.fromColors(
+              //   direction: ShimmerDirection.ltr,
+              //   baseColor: ThemeColor.black,
+              //   period: const Duration(milliseconds: 3000),
+              //   highlightColor: ThemeColor.lightBlue,
+              //   child: Text(
+              //     "₹${userData.balance.toString()}",
+              //     style: GoogleFonts.ibmPlexSans(
+              //         fontSize: 55,
+              //         fontWeight: FontWeight.w600,
+              //         color: ThemeColor.black),
+              //   ),
+              // ),
+              sb.height20,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
                       height: 40,
                       width: 150,
                       decoration: BoxDecoration(
-                          color: ThemeColor.lightGrey,
+                          color: ThemeColor.secondary,
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                           child: Text(
-                        "Request",
+                        "Transfer",
                         style: GoogleFonts.ubuntu(
-                          color: ThemeColor.black,
+                          color: ThemeColor.white,
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),
                       )),
                     ),
-                  ],
-                ),
-                sb.height20,
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DepositScreen(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 70,
+                  ),
+                  sb.width20,
+                  Container(
+                    height: 40,
+                    width: 150,
                     decoration: BoxDecoration(
-                      // boxShadow: const [
-                      //   BoxShadow(
-                      //       color: ThemeColor.shadow,
-                      //       blurRadius: 10,
-                      //       spreadRadius: 0.1,
-                      //       offset: Offset(0, 10)),
-                      // ],
-                      color: ThemeColor.white,
-                      borderRadius: BorderRadius.circular(20),
+                        color: ThemeColor.lightGrey,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Center(
+                        child: Text(
+                      "Request",
+                      style: GoogleFonts.ubuntu(
+                        color: ThemeColor.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )),
+                  ),
+                ],
+              ),
+              sb.height20,
+              Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 500,
+                    margin: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            ThemeColor.primary,
+                            ThemeColor.scaffoldBgColor
+                          ]),
+
+                      // color: ThemeColor.primary,
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Cash Deposit",
-                            style: GoogleFonts.ubuntu(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            width: 100,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DepositScreen(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 70,
                             decoration: BoxDecoration(
-                                color: ThemeColor.secondary,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Center(
-                              child: const Icon(
-                                Icons.arrow_forward,
-                                color: ThemeColor.white,
+                              // boxShadow: const [
+                              //   BoxShadow(
+                              //       color: ThemeColor.shadow,
+                              //       blurRadius: 10,
+                              //       spreadRadius: 0.1,
+                              //       offset: Offset(0, 10)),
+                              // ],
+                              color: ThemeColor.white,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0, vertical: 15.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Cash Deposit",
+                                    style: GoogleFonts.ubuntu(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Container(
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                        color: ThemeColor.secondary,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Center(
+                                      child: const Icon(
+                                        Icons.arrow_forward,
+                                        color: ThemeColor.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                sb.height10,
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TransactionsScreen(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      // boxShadow: const [
-                      //   BoxShadow(
-                      //       color: ThemeColor.shadow,
-                      //       blurRadius: 10,
-                      //       spreadRadius: 0.1,
-                      //       offset: Offset(0, 10)),
-                      // ],
-                      color: ThemeColor.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "View Transactions",
-                            style: GoogleFonts.ubuntu(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            width: 100,
+                        ),
+                        sb.height10,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TransactionsScreen(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 70,
                             decoration: BoxDecoration(
-                                color: ThemeColor.secondary,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Center(
-                              child: const Icon(
-                                Icons.arrow_forward,
-                                color: ThemeColor.white,
+                              // boxShadow: const [
+                              //   BoxShadow(
+                              //       color: ThemeColor.shadow,
+                              //       blurRadius: 10,
+                              //       spreadRadius: 0.1,
+                              //       offset: Offset(0, 10)),
+                              // ],
+                              color: ThemeColor.white,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0, vertical: 15.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "View Transactions",
+                                    style: GoogleFonts.ubuntu(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Container(
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                        color: ThemeColor.secondary,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Center(
+                                      child: const Icon(
+                                        Icons.arrow_forward,
+                                        color: ThemeColor.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                sb.height10,
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ViewCardScreen(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      // boxShadow: const [
-                      //   BoxShadow(
-                      //       color: ThemeColor.shadow,
-                      //       blurRadius: 10,
-                      //       spreadRadius: 0.1,
-                      //       offset: Offset(0, 10)),
-                      // ],
-                      color: ThemeColor.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "View Card",
-                            style: GoogleFonts.ubuntu(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            width: 100,
+                        ),
+                        sb.height10,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ViewCardScreen(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 70,
                             decoration: BoxDecoration(
-                                color: ThemeColor.secondary,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Center(
-                              child: const Icon(
-                                Icons.arrow_forward,
-                                color: ThemeColor.white,
+                              // boxShadow: const [
+                              //   BoxShadow(
+                              //       color: ThemeColor.shadow,
+                              //       blurRadius: 10,
+                              //       spreadRadius: 0.1,
+                              //       offset: Offset(0, 10)),
+                              // ],
+                              color: ThemeColor.white,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0, vertical: 15.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "View Card",
+                                    style: GoogleFonts.ubuntu(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Container(
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                        color: ThemeColor.secondary,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Center(
+                                      child: const Icon(
+                                        Icons.arrow_forward,
+                                        color: ThemeColor.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        sb.height80,
+                      ],
                     ),
                   ),
-                ),
-                sb.height80,
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

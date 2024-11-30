@@ -141,7 +141,6 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
                                     Text(
                                       getCardNumber(
                                           "333366${userData.phoneNo}"),
-                                      // "3333 ${userData.phoneNo.replaceAll(RegExp(r'(.{4})'), r'$1 ')}",
                                       style: GoogleFonts.robotoMono(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w400,
