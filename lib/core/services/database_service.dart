@@ -137,8 +137,8 @@ class DatabaseService {
               "${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}")
           .set({
         'name': userData.name,
-        'data': dateAddMoney,
-        'date': timeAddMoney,
+        'date': dateAddMoney,
+        'time': timeAddMoney,
         'sent': true,
         'receiverUid': receiverUid,
         'senderUid': userData.userid,

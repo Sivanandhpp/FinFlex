@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:math' as math;
 import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/main.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/globalvalues/sizedboxes.dart' as sb;
 
@@ -51,13 +53,29 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                   ],
                 ),
               ),
+              sb.height20,
+              Text(
+                "Current Balance",
+                style: GoogleFonts.ubuntu(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: ThemeColor.grey),
+              ),
+              Text(
+                "₹${userData.balance.toString()}",
+                style: GoogleFonts.numans(
+                    fontSize: 55,
+                    fontWeight: FontWeight.bold,
+                    color: ThemeColor.black),
+              ),
+              sb.height20,
               FirebaseAnimatedList(
                 query:
                     dbReference.child('users/${userData.userid}/transactions'),
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 sort: (a, b) {
-                  return a.key.toString().compareTo(b.key.toString());
+                  return b.key.toString().compareTo(a.key.toString());
                 },
                 defaultChild: const Center(
                   child: CircularProgressIndicator(
@@ -67,99 +85,71 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                 itemBuilder: (context, snapshot, animation, index) {
                   return Column(
                     children: [
-                      sb.height5,
                       GestureDetector(
                         onTap: () {},
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 10.0),
-                          decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: ThemeColor.shadow,
-                                    blurRadius: 10,
-                                    spreadRadius: 0.1,
-                                    offset: Offset(0, 10)),
-                              ],
-                              color: ThemeColor.white,
-                              borderRadius: BorderRadius.circular(20)),
+                              horizontal: 5.0, vertical: 10.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    child: SizedBox(
-                                      height: 50,
-                                      width: 50,
-                                      child: CachedNetworkImage(
-                                        imageUrl: snapshot
-                                            .child('profile')
-                                            .value
-                                            .toString(),
-                                        imageBuilder:
-                                            (context, imageProvider) =>
-                                                Container(
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: imageProvider,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
+                                  snapshot.child('sent').value == true
+                                      ? Transform.rotate(
+                                          angle: 45 * math.pi / 180,
+                                          child: Icon(FontAwesomeIcons.arrowUp,
+                                              color: ThemeColor.red,
+                                              size: 30.0),
+                                        )
+                                      : Transform.rotate(
+                                          angle: 45 * math.pi / 180,
+                                          child: Icon(
+                                              FontAwesomeIcons.arrowDown,
+                                              color: ThemeColor.green,
+                                              size: 30.0),
                                         ),
-                                        placeholder: (context, url) =>
-                                            const CircularProgressIndicator(),
-                                        errorWidget: (context, url, error) =>
-                                            ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(15.0),
-                                          child: const Image(
-                                            height: 50,
-                                            width: 50,
-                                            image: AssetImage(
-                                                "assets/images/avatar.jpg"),
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
                                   sb.width10,
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        snapshot.child('name').value.toString(),
-                                        style: GoogleFonts.ubuntu(
-                                          color: ThemeColor.black,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
+                                      snapshot.child('sent').value == true
+                                          ? Text(
+                                              "To ${snapshot.child('name').value.toString()}",
+                                              style: GoogleFonts.ubuntu(
+                                                color: ThemeColor.black,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            )
+                                          : Text(
+                                              snapshot
+                                                  .child('name')
+                                                  .value
+                                                  .toString(),
+                                              style: GoogleFonts.ubuntu(
+                                                color: ThemeColor.black,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                      // const SizedBox(
+                                      //   height: 2,
+                                      // ),
+                                      // Text(
+                                      //   "Txn ID: ${snapshot.key.toString()}",
+                                      //   style: GoogleFonts.ubuntu(
+                                      //     color: ThemeColor.black,
+                                      //     fontSize: 16,
+                                      //     fontWeight: FontWeight.normal,
+                                      //   ),
+                                      // ),
                                       // const SizedBox(
                                       //   height: 2,
                                       // ),
                                       Text(
-                                        snapshot
-                                            .child('email')
-                                            .value
-                                            .toString(),
-                                        style: GoogleFonts.ubuntu(
-                                          color: ThemeColor.black,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                      ),
-                                      // const SizedBox(
-                                      //   height: 2,
-                                      // ),
-                                      Text(
-                                        snapshot
-                                            .child('phone')
-                                            .value
-                                            .toString(),
+                                        "${snapshot.child('data').value.toString()} at ${snapshot.child('date').value.toString()}",
                                         style: GoogleFonts.ubuntu(
                                           color: ThemeColor.black,
                                           fontSize: 16,
@@ -170,30 +160,52 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                   ),
                                 ],
                               ),
-                              GestureDetector(
-                                onTap: () async {
-                                  await dbService.addMoney(
-                                      100.0, snapshot.key.toString(), context);
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             HomeScreen()));
-                                },
-                                child: Container(
-                                  width: 55,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      color: ThemeColor.secondary,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Center(
-                                    child: const Icon(
-                                      Icons.attach_money,
-                                      color: ThemeColor.white,
-                                    ),
-                                  ),
-                                ),
+
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: snapshot.child('sent').value == true
+                                    ? Text(
+                                        "- ${snapshot.child('amount').value.toString()}",
+                                        style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.red,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    : Text(
+                                        "+ ${snapshot.child('amount').value.toString()}",
+                                        style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.green,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                               ),
+
+                              // GestureDetector(
+                              //   onTap: () async {
+                              //     await dbService.addMoney(
+                              //         100.0, snapshot.key.toString(), context);
+                              //     // Navigator.push(
+                              //     //     context,
+                              //     //     MaterialPageRoute(
+                              //     //         builder: (context) =>
+                              //     //             HomeScreen()));
+                              //   },
+                              //   child: Container(
+                              //     width: 55,
+                              //     height: 50,
+                              //     decoration: BoxDecoration(
+                              //         color: ThemeColor.secondary,
+                              //         borderRadius: BorderRadius.circular(15)),
+                              //     child: Center(
+                              //       child: const Icon(
+                              //         Icons.attach_money,
+                              //         color: ThemeColor.white,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                               // userStatus(snapshot),
                               // Container(
                               //   width: 70,
@@ -210,6 +222,10 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                           ),
                         ),
                       ),
+                      Divider(
+                        color: Colors.black,
+                        thickness: 0.5,
+                      )
                     ],
                   );
                 },
