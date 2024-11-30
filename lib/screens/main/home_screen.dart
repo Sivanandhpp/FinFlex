@@ -12,7 +12,7 @@ import 'package:finflex/main.dart';
 import 'package:finflex/screens/main/screen_profile.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../core/globalvalues/sizedboxes.dart' as sb;
-import 'dart:math' as math;
+
 import '../../core/globalvalues/theme_color.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -150,11 +150,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 query: dbReference.child('users/${userData.userid}'),
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                defaultChild: const Center(
-                  child: CircularProgressIndicator(
-                    color: ThemeColor.primary,
+                defaultChild: Center(
+                    child: Shimmer.fromColors(
+                  baseColor: ThemeColor.shimmerBG,
+                  highlightColor: ThemeColor.white,
+                  child: Text(
+                    "₹****.**",
+                    style: GoogleFonts.ibmPlexSans(
+                        fontSize: 55,
+                        fontWeight: FontWeight.w600,
+                        color: ThemeColor.black),
                   ),
-                ),
+                )),
                 itemBuilder: (context, snapshot, animation, index) {
                   return Column(
                     children: [
@@ -194,7 +201,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DepositScreen(),
+                        ),
+                      );
+                    },
                     child: Container(
                       height: 40,
                       width: 150,
@@ -256,14 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: [
                         GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DepositScreen(),
-                              ),
-                            );
-                          },
+                          onTap: () {},
                           child: Container(
                             width: double.infinity,
                             height: 70,

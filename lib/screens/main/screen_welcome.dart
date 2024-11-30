@@ -43,7 +43,7 @@ class IntroScreen extends StatelessWidget {
                       "Let's get started",
                       style: TextStyle(
                         color: ThemeColor.purpleBG,
-                        fontSize: 22,
+                        fontSize: 32,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
