@@ -25,21 +25,35 @@ class _QueryScreenState extends State<QueryScreen> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Queries',
-                    style: GoogleFonts.ubuntu(
-                      color: ThemeColor.black,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  dbService.getDatabaseUser(userData.userid);
+                  Navigator.pop(context);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(
+                          left: 0, right: 10, top: 10, bottom: 10),
+                      child: const Icon(
+                        Icons.arrow_back_ios_new,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                ],
+                    Text(
+                      "Need help?",
+                      style: GoogleFonts.ubuntu(
+                        color: ThemeColor.black,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               sb.height20,
               Container(
@@ -186,6 +200,7 @@ class _QueryScreenState extends State<QueryScreen> {
                                             TextStyle(color: ThemeColor.white),
                                       ))));
                         }
+                        Navigator.pop(context);
                       },
                       child: Container(
                         width: double.infinity,

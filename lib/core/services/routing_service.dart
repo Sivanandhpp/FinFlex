@@ -1,3 +1,5 @@
+import 'package:finflex/screens/main/admin_home.dart';
+import 'package:finflex/screens/main/user_home.dart';
 import 'package:flutter/material.dart';
 import 'package:finflex/core/globalvalues/user_data.dart';
 import 'package:finflex/core/services/auth_service.dart';
@@ -5,11 +7,9 @@ import 'package:finflex/core/globalvalues/userauth_model.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/core/services/sharedpref_service.dart';
 import 'package:finflex/screens/main/screen_welcome.dart';
-import 'package:finflex/screens/navbar/user_dashboard.dart';
 import 'package:finflex/screens/widgets/shimmer_home.dart';
 import 'package:provider/provider.dart';
 import '../../main.dart';
-import '../../screens/navbar/admin_dashboard.dart';
 import '../../screens/main/screen_disabledacc.dart';
 import '../../screens/widgets/splash_loading.dart';
 import '../../screens/authentication/screen_login.dart';
@@ -37,11 +37,12 @@ class RoutingService extends StatelessWidget {
                     return const DisabledAccount();
                   } else {
                     if (snapshot.data!.role == "admin") {
+                      print(snapshot.data?.role);
                       //Admin Dashboard
-                      return AdminDashBoard();
+                      return const AdminHomeScreen();
                     } else {
                       //User Dashboard
-                      return UserDashBoard();
+                      return const UserHomeScreen();
                     }
                   }
                 }

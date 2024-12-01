@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:finflex/core/globalvalues/theme_color.dart';
+import 'package:finflex/main.dart';
+import 'package:finflex/screens/main/screen_notifications.dart';
+import 'package:finflex/screens/main/screen_paymentdone.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:finflex/core/globalvalues/sizedboxes.dart' as sb;
@@ -41,7 +44,7 @@ class PaymentScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "Sending to",
+                        "Paying to",
                         style: GoogleFonts.ubuntu(
                           color: ThemeColor.black,
                           fontSize: 26,
@@ -105,6 +108,8 @@ class PaymentScreen extends StatelessWidget {
                   validator: (value) {
                     if (_amountController.text.isEmpty) {
                       return "This field can't be empty";
+                    } else if (double.parse(_amountController.text) < 1) {
+                      return "This field can't be zero";
                     }
                   },
                   style: GoogleFonts.poppins(
@@ -129,6 +134,42 @@ class PaymentScreen extends StatelessWidget {
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(Radius.circular(18)),
+                    ),
+                  ),
+                ),
+                sb.height20,
+                GestureDetector(
+                  onTap: () async {
+                    if (double.parse(_amountController.text) > 0) {
+                      if (userData.role == 'admin' ||
+                          userData.balance >
+                              double.parse(_amountController.text)) {}
+                      await dbService.addMoney(
+                          double.parse(_amountController.text),
+                          receiverUID,
+                          context);
+
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PaymentDoneScreen(
+                                    userName: receiverName,
+                                    paidAmount:
+                                        double.parse(_amountController.text),
+                                  )));
+                    }
+                  },
+                  child: Container(
+                    width: 200,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        color: ThemeColor.secondary,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: const Center(
+                      child: Icon(
+                        Icons.send,
+                        color: ThemeColor.white,
+                      ),
                     ),
                   ),
                 ),

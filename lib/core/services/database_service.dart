@@ -111,13 +111,18 @@ class DatabaseService {
           "${now.hour.toString().padLeft(2, "0")}:${now.minute.toString().padLeft(2, "0")}:${now.second.toString().padLeft(2, "0")}";
       String dateAddMoney =
           "${now.day.toString().padLeft(2, "0")}/${now.month.toString().padLeft(2, "0")}/${now.year}";
-           //Receiver Name Fetch
+      String senderName = userData.name;
+      //Receiver Name Fetch
       DataSnapshot receiverName =
           await dbReference.child("users/$receiverUid/name").get();
       String receiverNameDB = receiverName.value.toString();
 
+      if (userData.role == 'admin') {
+        senderName = 'Bank Deposit';
+      }
+
       mainTransactionRef.set({
-        'senderName': userData.name,
+        'senderName': senderName,
         'receiverName': receiverNameDB,
         'date': dateAddMoney,
         'time': timeAddMoney,
@@ -132,9 +137,12 @@ class DatabaseService {
           await dbReference.child("users/${userData.userid}/balance").get();
       String senderBalanceDB = senderBalance.value.toString();
 
-      dbReference
+        if (userData.role != 'admin') {
+       dbReference
           .child('users/${userData.userid}/balance')
           .set(double.parse(senderBalanceDB) - amount);
+      }
+      
 
       final senderTransactionRef =
           dbReference.child('users/${userData.userid}/transactions');
@@ -168,8 +176,8 @@ class DatabaseService {
               "${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}")
           .set({
         'name': userData.name,
-        'data': dateAddMoney,
-        'date': timeAddMoney,
+        'date': dateAddMoney,
+        'time': timeAddMoney,
         'sent': false,
         'receiverUid': receiverUid,
         'senderUid': userData.userid,

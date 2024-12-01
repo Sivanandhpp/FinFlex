@@ -72,11 +72,18 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                 query: dbReference.child('users/${userData.userid}'),
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                defaultChild: const Center(
-                  child: CircularProgressIndicator(
-                    color: ThemeColor.primary,
-                  ),
-                ),
+                defaultChild:Center(
+                    child: Shimmer.fromColors(
+                      baseColor: ThemeColor.shimmerBG,
+                      highlightColor: ThemeColor.white,
+                      child: Text(
+                        "₹****.**",
+                        style: GoogleFonts.ibmPlexSans(
+                            fontSize: 55,
+                            fontWeight: FontWeight.w600,
+                            color: ThemeColor.black),
+                      ),
+                    )),
                 itemBuilder: (context, snapshot, animation, index) {
                   return Column(
                     children: [
