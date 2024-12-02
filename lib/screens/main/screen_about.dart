@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -76,55 +78,39 @@ class ScreenAbout extends StatelessWidget {
                 // sb.height20,
                 Container(
                   width: double.infinity,
-                  height: 380,
+                  // height: 380,
                   decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                            color: ThemeColor.shadow,
-                            blurRadius: 10,
-                            spreadRadius: 0.2,
-                            offset: Offset(0, 10)),
-                      ],
+                      // boxShadow: const [
+                      //   BoxShadow(
+                      //       color: ThemeColor.shadow,
+                      //       blurRadius: 10,
+                      //       spreadRadius: 0.2,
+                      //       offset: Offset(0, 10)),
+                      // ],
                       color: ThemeColor.white,
                       borderRadius: BorderRadius.circular(30)),
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      const CircleAvatar(
-                        radius: 70,
-                        backgroundColor: Colors.transparent,
-                        child: ClipOval(
-                          child: Image(
-                            image: AssetImage('assets/images/logo.jpeg'),
-                          ),
-                        ),
+                      const Image(
+                        image: AssetImage('assets/images/jain.png'),
                       ),
                       Column(
                         children: [
-                          Text(
-                            'Jain University',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                fontFamily:
-                                    GoogleFonts.odorMeanChey().fontFamily),
-                          ),
                           Text(
                             'MCA - Students',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
-                                fontFamily:
-                                    GoogleFonts.odorMeanChey().fontFamily),
+                                fontFamily: GoogleFonts.ubuntu().fontFamily),
                           ),
                           Text(
                             'Data Structures Project',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
-                                fontFamily:
-                                    GoogleFonts.odorMeanChey().fontFamily),
+                                fontFamily: GoogleFonts.ubuntu().fontFamily),
                           ),
                         ],
                       ),
@@ -240,17 +226,18 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ],
                     ),
+                    sb.height10,
                     Container(
                       width: double.infinity,
-                      height: 100,
+                      // height: 100,
                       decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                              color: ThemeColor.shadow,
-                              blurRadius: 100,
-                              spreadRadius: 1,
-                              offset: Offset(0, 10)),
-                        ],
+                        // boxShadow: const [
+                        //   BoxShadow(
+                        //       color: ThemeColor.shadow,
+                        //       blurRadius: 100,
+                        //       spreadRadius: 1,
+                        //       offset: Offset(0, 10)),
+                        // ],
                         color: ThemeColor.white,
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -268,7 +255,7 @@ class ScreenAbout extends StatelessWidget {
                                     width: 70.0,
                                     child: Image(
                                       image:
-                                          AssetImage('assets/images/siva.jpg'),
+                                          AssetImage('assets/images/siva.jpeg'),
                                     ),
                                   ),
                                 ),
@@ -276,11 +263,11 @@ class ScreenAbout extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
+                                    // const SizedBox(
+                                    //   height: 15,
+                                    // ),
                                     Text(
-                                      "Sivanandh",
+                                      "Sivanandh P P",
                                       style: GoogleFonts.ubuntu(
                                           color: ThemeColor.black,
                                           fontSize: 20,
@@ -306,7 +293,8 @@ class ScreenAbout extends StatelessWidget {
                                     mode: LaunchMode.externalApplication,
                                     Uri(
                                         scheme: "https",
-                                        host: "sivanandhpp.github.io"));
+                                        host: "linkedin.com",
+                                        path: "in/sivanandh"));
                               },
                               child: ClipRRect(
                                 borderRadius:
@@ -315,8 +303,364 @@ class ScreenAbout extends StatelessWidget {
                                   height: 50.0,
                                   width: 50.0,
                                   color: ThemeColor.primary,
-                                  child: const Icon(FontAwesomeIcons.bolt,
-                                      color: Colors.white, size: 30.0),
+                                  child: const Icon(FontAwesomeIcons.angleRight,
+                                      color: Colors.white, size: 20.0),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.black,
+                      thickness: 0.5,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      // height: 100,
+                      decoration: BoxDecoration(
+                        // boxShadow: const [
+                        //   BoxShadow(
+                        //       color: ThemeColor.shadow,
+                        //       blurRadius: 100,
+                        //       spreadRadius: 1,
+                        //       offset: Offset(0, 10)),
+                        // ],
+                        color: ThemeColor.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: const SizedBox(
+                                    height: 70.0,
+                                    width: 70.0,
+                                    child: Image(
+                                      image: AssetImage(
+                                          'assets/images/avatar.jpg'),
+                                    ),
+                                  ),
+                                ),
+                                sb.width20,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // const SizedBox(
+                                    //   height: 15,
+                                    // ),
+                                    Text(
+                                      "Aleena N",
+                                      style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "JUKPG24MCAS11527",
+                                      style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.grey,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrl(
+                                    mode: LaunchMode.externalApplication,
+                                    Uri(
+                                        scheme: "https",
+                                        host: "linkedin.com",
+                                        path: "in/aleena-n-926079295"));
+                              },
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.circular(10.0), //or 15.0
+                                child: Container(
+                                  height: 50.0,
+                                  width: 50.0,
+                                  color: ThemeColor.primary,
+                                  child: const Icon(FontAwesomeIcons.angleRight,
+                                      color: Colors.white, size: 20.0),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.black,
+                      thickness: 0.5,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      // height: 100,
+                      decoration: BoxDecoration(
+                        // boxShadow: const [
+                        //   BoxShadow(
+                        //       color: ThemeColor.shadow,
+                        //       blurRadius: 100,
+                        //       spreadRadius: 1,
+                        //       offset: Offset(0, 10)),
+                        // ],
+                        color: ThemeColor.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: const SizedBox(
+                                    height: 70.0,
+                                    width: 70.0,
+                                    child: Image(
+                                      image: AssetImage(
+                                          'assets/images/avatar.jpg'),
+                                    ),
+                                  ),
+                                ),
+                                sb.width20,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // const SizedBox(
+                                    //   height: 15,
+                                    // ),
+                                    Text(
+                                      "Anuranj S Manoj",
+                                      style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "JUKPG24MCAS11619",
+                                      style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.grey,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrl(
+                                    mode: LaunchMode.externalApplication,
+                                    Uri(
+                                        scheme: "https",
+                                        host: "linkedin.com",
+                                        path: "in/anuranj-s-manoj-ba5871250"));
+                              },
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.circular(10.0), //or 15.0
+                                child: Container(
+                                  height: 50.0,
+                                  width: 50.0,
+                                  color: ThemeColor.primary,
+                                  child: const Icon(FontAwesomeIcons.angleRight,
+                                      color: Colors.white, size: 20.0),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.black,
+                      thickness: 0.5,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      // height: 100,
+                      decoration: BoxDecoration(
+                        // boxShadow: const [
+                        //   BoxShadow(
+                        //       color: ThemeColor.shadow,
+                        //       blurRadius: 100,
+                        //       spreadRadius: 1,
+                        //       offset: Offset(0, 10)),
+                        // ],
+                        color: ThemeColor.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: const SizedBox(
+                                    height: 70.0,
+                                    width: 70.0,
+                                    child: Image(
+                                      image: AssetImage(
+                                          'assets/images/avatar.jpg'),
+                                    ),
+                                  ),
+                                ),
+                                sb.width20,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // const SizedBox(
+                                    //   height: 15,
+                                    // ),
+                                    Text(
+                                      "Nabeel Nasar",
+                                      style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "JUKPG24MCAS10696",
+                                      style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.grey,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrl(
+                                    mode: LaunchMode.externalApplication,
+                                    Uri(
+                                        scheme: "https",
+                                        host: "linkedin.com",
+                                        path: "in/muhammednabeelnasar"));
+                              },
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.circular(10.0), //or 15.0
+                                child: Container(
+                                  height: 50.0,
+                                  width: 50.0,
+                                  color: ThemeColor.primary,
+                                  child: const Icon(FontAwesomeIcons.angleRight,
+                                      color: Colors.white, size: 20.0),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.black,
+                      thickness: 0.5,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      // height: 100,
+                      decoration: BoxDecoration(
+                        // boxShadow: const [
+                        //   BoxShadow(
+                        //       color: ThemeColor.shadow,
+                        //       blurRadius: 100,
+                        //       spreadRadius: 1,
+                        //       offset: Offset(0, 10)),
+                        // ],
+                        color: ThemeColor.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: const SizedBox(
+                                    height: 70.0,
+                                    width: 70.0,
+                                    child: Image(
+                                      image: AssetImage(
+                                          'assets/images/avatar.jpg'),
+                                    ),
+                                  ),
+                                ),
+                                sb.width20,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // const SizedBox(
+                                    //   height: 15,
+                                    // ),
+                                    Text(
+                                      "Abhijith M",
+                                      style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "JUKPG24MCA11490",
+                                      style: GoogleFonts.ubuntu(
+                                          color: ThemeColor.grey,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrl(
+                                    mode: LaunchMode.externalApplication,
+                                    Uri(
+                                        scheme: "https",
+                                        host: "linkedin.com",
+                                        path: "in/anuranj-s-manoj-ba5871250"));
+                              },
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.circular(10.0), //or 15.0
+                                child: Container(
+                                  height: 50.0,
+                                  width: 50.0,
+                                  color: ThemeColor.primary,
+                                  child: const Icon(FontAwesomeIcons.angleRight,
+                                      color: Colors.white, size: 20.0),
                                 ),
                               ),
                             ),
@@ -325,6 +669,10 @@ class ScreenAbout extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                const Divider(
+                  color: Colors.black,
+                  thickness: 0.5,
                 ),
                 sb.height80
               ],

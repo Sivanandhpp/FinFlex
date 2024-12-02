@@ -73,7 +73,8 @@ class _DepositScreenState extends State<DepositScreen> {
                     ),
                   ),
                   itemBuilder: (context, snapshot, animation, index) {
-                    if (snapshot.key != userData.userid) {
+                    if (snapshot.key != userData.userid &&
+                        snapshot.child('role').value.toString() != "admin") {
                       return Column(
                         children: [
                           sb.height5,

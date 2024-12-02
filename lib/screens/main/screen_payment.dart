@@ -44,7 +44,7 @@ class PaymentScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "Paying to",
+                        "Paying",
                         style: GoogleFonts.ubuntu(
                           color: ThemeColor.black,
                           fontSize: 26,
@@ -119,7 +119,8 @@ class PaymentScreen extends StatelessWidget {
                   ),
                   autofocus: true,
                   // expands: true,
-                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   textInputAction: TextInputAction.done,
                   cursorColor: ThemeColor.primary,
                   decoration: InputDecoration(
@@ -142,21 +143,33 @@ class PaymentScreen extends StatelessWidget {
                   onTap: () async {
                     if (double.parse(_amountController.text) > 0) {
                       if (userData.role == 'admin' ||
-                          userData.balance >
-                              double.parse(_amountController.text)) {}
-                      await dbService.addMoney(
-                          double.parse(_amountController.text),
-                          receiverUID,
-                          context);
-
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PaymentDoneScreen(
-                                    userName: receiverName,
-                                    paidAmount:
-                                        double.parse(_amountController.text),
-                                  )));
+                          userData.balance >=
+                              double.parse(_amountController.text)) {
+                        await dbService.addMoney(
+                            double.parse(_amountController.text),
+                            receiverUID,
+                            context);
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentDoneScreen(
+                                      userName: receiverName,
+                                      paidAmount:
+                                          double.parse(_amountController.text),
+                                    )));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(15.0))),
+                                backgroundColor: ThemeColor.primary,
+                                content: Text(
+                                  'Insufficient balance',
+                                  style: TextStyle(color: ThemeColor.white),
+                                )));
+                      }
                     }
                   },
                   child: Container(

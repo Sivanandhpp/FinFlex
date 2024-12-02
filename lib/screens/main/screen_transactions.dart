@@ -18,6 +18,7 @@ class TransactionsScreen extends StatefulWidget {
 
 class _TransactionsScreenState extends State<TransactionsScreen> {
   DatabaseService dbService = DatabaseService();
+  String finalBal = userData.balance.toString();
   @override
   void initState() {
     super.initState();
@@ -72,19 +73,34 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                 query: dbReference.child('users/${userData.userid}'),
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                defaultChild:Center(
+                defaultChild: Center(
                     child: Shimmer.fromColors(
-                      baseColor: ThemeColor.shimmerBG,
-                      highlightColor: ThemeColor.white,
-                      child: Text(
-                        "₹****.**",
-                        style: GoogleFonts.ibmPlexSans(
-                            fontSize: 55,
-                            fontWeight: FontWeight.w600,
-                            color: ThemeColor.black),
-                      ),
-                    )),
+                  baseColor: ThemeColor.shimmerBG,
+                  highlightColor: ThemeColor.white,
+                  child: Text(
+                    "₹****.**",
+                    style: GoogleFonts.ibmPlexSans(
+                        fontSize: 50,
+                        fontWeight: FontWeight.w600,
+                        color: ThemeColor.black),
+                  ),
+                )),
                 itemBuilder: (context, snapshot, animation, index) {
+                  //TODO
+                  if (snapshot.key == 'balance') {
+                    userData.balance = double.parse(
+                        snapshot.child('balance').value.toString());
+                    String str = userData.balance.toString();
+                    int dotIndex = str.indexOf('.');
+                    if (dotIndex != -1) {
+                      String afterDot = str.substring(dotIndex + 1);
+                      String twoCharsAfterDot = afterDot.length >= 2
+                          ? afterDot.substring(0, 2)
+                          : afterDot;
+                      finalBal =
+                          str.substring(0, dotIndex + 1) + twoCharsAfterDot;
+                    }
+                  }
                   return Column(
                     children: [
                       if (snapshot.key == 'balance')
@@ -94,7 +110,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                           period: const Duration(milliseconds: 3000),
                           highlightColor: ThemeColor.lightBlue,
                           child: Text(
-                            "₹${snapshot.child('balance').value.toString()}",
+                            "$finalBal",
+                            // "₹${snapshot.child('balance').value.toString()}",
                             style: GoogleFonts.ibmPlexSans(
                                 fontSize: 55,
                                 fontWeight: FontWeight.w600,
@@ -263,7 +280,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                           ),
                         ),
                       ),
-                      Divider(
+                     const Divider(
                         color: Colors.black,
                         thickness: 0.5,
                       )

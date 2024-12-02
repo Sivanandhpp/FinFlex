@@ -268,48 +268,48 @@ class _ScreenProfileState extends State<ScreenProfile> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                sb.height10,
+                sb.height5,
                 Text(
                   "Mail ID: ${userData.email}",
                   style: GoogleFonts.ubuntu(
                     color: ThemeColor.black,
-                    fontSize: 20,
+                    fontSize: 15,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                sb.height10,
+                sb.height5,
                 Text(
                   "Phone No: ${userData.phoneNo}",
                   style: GoogleFonts.ubuntu(
                     color: ThemeColor.black,
-                    fontSize: 20,
+                    fontSize: 15,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                sb.height10,
+                sb.height5,
                 Text(
                   "Account Number: 333366${userData.phoneNo}",
                   style: GoogleFonts.ubuntu(
                     color: ThemeColor.black,
-                    fontSize: 20,
+                    fontSize: 15,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                sb.height10,
+                sb.height5,
                 Text(
                   "Account Created on: ${userData.accountCreationDate}",
                   style: GoogleFonts.ubuntu(
                     color: ThemeColor.black,
-                    fontSize: 20,
+                    fontSize: 15,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                sb.height10,
+                sb.height5,
                 Text(
                   "Account Status: ${userData.status}",
                   style: GoogleFonts.ubuntu(
                     color: ThemeColor.black,
-                    fontSize: 20,
+                    fontSize: 15,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
