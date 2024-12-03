@@ -16,9 +16,8 @@ class ViewUsers extends StatefulWidget {
   State<ViewUsers> createState() => _ViewUsersState();
 }
 
-int currentYr = DateTime.now().year;
-
 class _ViewUsersState extends State<ViewUsers> {
+  String finalBal = "0.0";
   Widget alertBoxContents(DataSnapshot snapshot) {
     if (snapshot.child('status').value == 'disabled') {
       return GestureDetector(
@@ -300,6 +299,17 @@ class _ViewUsersState extends State<ViewUsers> {
                     ),
                   ),
                   itemBuilder: (context, snapshot, animation, index) {
+                    String str = snapshot.child('balance').value.toString();
+                    int dotIndex = str.indexOf('.');
+                    if (dotIndex != -1) {
+                      String afterDot = str.substring(dotIndex + 1);
+                      String twoCharsAfterDot = afterDot.length >= 2
+                          ? afterDot.substring(0, 2)
+                          : afterDot;
+                      finalBal =
+                          str.substring(0, dotIndex + 1) + twoCharsAfterDot;
+                    }
+
                     return Column(
                       children: [
                         sb.height5,
@@ -423,7 +433,7 @@ class _ViewUsersState extends State<ViewUsers> {
                                             ),
                                             sb.height10,
                                             Text(
-                                              "A/C Balance: ${snapshot.child('balance').value.toString()}/-",
+                                              "A/C Balance: $finalBal",
                                               style: GoogleFonts.ubuntu(
                                                   color: ThemeColor.black,
                                                   fontSize: 14,

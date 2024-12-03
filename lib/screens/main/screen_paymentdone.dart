@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PaymentDoneScreen extends StatefulWidget {
-  PaymentDoneScreen(
+  const PaymentDoneScreen(
       {super.key, required this.userName, required this.paidAmount});
-  String userName;
-  double paidAmount;
+  final String userName;
+  final double paidAmount;
 
   @override
   State<PaymentDoneScreen> createState() => _PaymentDoneScreenState();

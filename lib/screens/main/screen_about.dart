@@ -84,7 +84,7 @@ class ScreenAbout extends StatelessWidget {
                       //       offset: Offset(0, 10)),
                       // ],
                       color: ThemeColor.white,
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(20)),
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -214,7 +214,7 @@ class ScreenAbout extends StatelessWidget {
                           width: 20,
                         ),
                         Text(
-                          "Developers",
+                          "The Team",
                           style: GoogleFonts.ubuntu(
                               color: ThemeColor.black,
                               fontSize: 26,
@@ -235,7 +235,7 @@ class ScreenAbout extends StatelessWidget {
                         //       offset: Offset(0, 10)),
                         // ],
                         color: ThemeColor.white,
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -244,16 +244,25 @@ class ScreenAbout extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: const SizedBox(
-                                    height: 70.0,
-                                    width: 70.0,
-                                    child: Image(
-                                      image:
-                                          AssetImage('assets/images/siva.jpeg'),
-                                    ),
-                                  ),
+                                // ClipRRect(
+                                //   borderRadius: BorderRadius.circular(20.0),
+                                //   child: const SizedBox(
+                                //     height: 70.0,
+                                //     width: 70.0,
+                                //     child: Image(
+                                //       image:
+                                //           AssetImage('assets/images/siva.jpeg'),
+                                //     ),
+                                //   ),
+                                // ),
+
+                                sb.width20,
+                                Text(
+                                  "1",
+                                  style: GoogleFonts.ubuntu(
+                                      color: ThemeColor.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 sb.width20,
                                 Column(
@@ -321,7 +330,7 @@ class ScreenAbout extends StatelessWidget {
                         //       offset: Offset(0, 10)),
                         // ],
                         color: ThemeColor.white,
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -330,16 +339,25 @@ class ScreenAbout extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: const SizedBox(
-                                    height: 70.0,
-                                    width: 70.0,
-                                    child: Image(
-                                      image: AssetImage(
-                                          'assets/images/avatar.jpg'),
-                                    ),
-                                  ),
+                                // ClipRRect(
+                                //   borderRadius: BorderRadius.circular(20.0),
+                                //   child: const SizedBox(
+                                //     height: 70.0,
+                                //     width: 70.0,
+                                //     child: Image(
+                                //       image: AssetImage(
+                                //           'assets/images/avatar.jpg'),
+                                //     ),
+                                //   ),
+                                // ),
+                                // sb.width20,
+                                sb.width20,
+                                Text(
+                                  "2",
+                                  style: GoogleFonts.ubuntu(
+                                      color: ThemeColor.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 sb.width20,
                                 Column(
@@ -410,7 +428,7 @@ class ScreenAbout extends StatelessWidget {
                         //       offset: Offset(0, 10)),
                         // ],
                         color: ThemeColor.white,
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -419,16 +437,25 @@ class ScreenAbout extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: const SizedBox(
-                                    height: 70.0,
-                                    width: 70.0,
-                                    child: Image(
-                                      image: AssetImage(
-                                          'assets/images/avatar.jpg'),
-                                    ),
-                                  ),
+                                // ClipRRect(
+                                //   borderRadius: BorderRadius.circular(20.0),
+                                //   child: const SizedBox(
+                                //     height: 70.0,
+                                //     width: 70.0,
+                                //     child: Image(
+                                //       image: AssetImage(
+                                //           'assets/images/avatar.jpg'),
+                                //     ),
+                                //   ),
+                                // ),
+                                // sb.width20,
+                                sb.width20,
+                                Text(
+                                  "3",
+                                  style: GoogleFonts.ubuntu(
+                                      color: ThemeColor.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 sb.width20,
                                 Column(
@@ -499,7 +526,7 @@ class ScreenAbout extends StatelessWidget {
                         //       offset: Offset(0, 10)),
                         // ],
                         color: ThemeColor.white,
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -508,16 +535,25 @@ class ScreenAbout extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: const SizedBox(
-                                    height: 70.0,
-                                    width: 70.0,
-                                    child: Image(
-                                      image: AssetImage(
-                                          'assets/images/avatar.jpg'),
-                                    ),
-                                  ),
+                                // ClipRRect(
+                                //   borderRadius: BorderRadius.circular(20.0),
+                                //   child: const SizedBox(
+                                //     height: 70.0,
+                                //     width: 70.0,
+                                //     child: Image(
+                                //       image: AssetImage(
+                                //           'assets/images/avatar.jpg'),
+                                //     ),
+                                //   ),
+                                // ),
+                                // sb.width20,
+                                sb.width20,
+                                Text(
+                                  "4",
+                                  style: GoogleFonts.ubuntu(
+                                      color: ThemeColor.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 sb.width20,
                                 Column(
@@ -588,7 +624,7 @@ class ScreenAbout extends StatelessWidget {
                         //       offset: Offset(0, 10)),
                         // ],
                         color: ThemeColor.white,
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -597,16 +633,25 @@ class ScreenAbout extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: const SizedBox(
-                                    height: 70.0,
-                                    width: 70.0,
-                                    child: Image(
-                                      image: AssetImage(
-                                          'assets/images/avatar.jpg'),
-                                    ),
-                                  ),
+                                // ClipRRect(
+                                //   borderRadius: BorderRadius.circular(20.0),
+                                //   child: const SizedBox(
+                                //     height: 70.0,
+                                //     width: 70.0,
+                                //     child: Image(
+                                //       image: AssetImage(
+                                //           'assets/images/avatar.jpg'),
+                                //     ),
+                                //   ),
+                                // ),
+                                // sb.width20,
+                                sb.width20,
+                                Text(
+                                  "5",
+                                  style: GoogleFonts.ubuntu(
+                                      color: ThemeColor.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 sb.width20,
                                 Column(

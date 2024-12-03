@@ -165,7 +165,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   ),
                 )),
                 itemBuilder: (context, snapshot, animation, index) {
-                  //TODO
+              
                   if (snapshot.key == 'balance') {
                     userData.balance = double.parse(
                         snapshot.child('balance').value.toString());
