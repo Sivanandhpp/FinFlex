@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:finflex/screens/main/screen_payment.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/main.dart';
@@ -176,17 +177,17 @@ class _DepositScreenState extends State<DepositScreen> {
                                           // const SizedBox(
                                           //   height: 2,
                                           // ),
-                                          Text(
-                                            snapshot
-                                                .child('email')
-                                                .value
-                                                .toString(),
-                                            style: GoogleFonts.ubuntu(
-                                              color: ThemeColor.black,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                          ),
+                                          // Text(
+                                          //   snapshot
+                                          //       .child('email')
+                                          //       .value
+                                          //       .toString(),
+                                          //   style: GoogleFonts.ubuntu(
+                                          //     color: ThemeColor.black,
+                                          //     fontSize: 16,
+                                          //     fontWeight: FontWeight.normal,
+                                          //   ),
+                                          // ),
                                           // const SizedBox(
                                           //   height: 2,
                                           // ),
@@ -205,29 +206,16 @@ class _DepositScreenState extends State<DepositScreen> {
                                       ),
                                     ],
                                   ),
-                                  GestureDetector(
-                                    onTap: () async {
-                                      //  await dbService.addMoney(100.0,
-                                      //       snapshot.key.toString(), context);
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) =>
-                                      //             HomeScreen()));
-                                    },
-                                    child: Container(
-                                      width: 55,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.secondary,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.attach_money,
-                                          color: ThemeColor.white,
-                                        ),
-                                      ),
+                                  Container(
+                                    width: 55,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                        color: ThemeColor.secondary,
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    child: const Center(
+                                      child: Icon(FontAwesomeIcons.angleRight,
+                                          color: Colors.white, size: 20.0),
                                     ),
                                   ),
                                   // userStatus(snapshot),

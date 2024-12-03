@@ -331,32 +331,132 @@ class _ViewUsersState extends State<ViewUsers> {
                                           const EdgeInsets.all(20.0),
                                       title: Center(
                                         child: Text(
-                                          "Verify or Disable",
+                                          "Manage user",
                                           style: GoogleFonts.ubuntu(
                                               color: ThemeColor.black,
-                                              fontSize: 18,
+                                              fontSize: 22,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
                                       content: SizedBox(
-                                        height: 140,
+                                        height: 150,
                                         width: double.infinity,
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
+                                            sb.height5,
+                                            Row(
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: SizedBox(
+                                                    height: 70,
+                                                    width: 70,
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: snapshot
+                                                          .child('profile')
+                                                          .value
+                                                          .toString(),
+                                                      imageBuilder: (context,
+                                                              imageProvider) =>
+                                                          Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            image:
+                                                                imageProvider,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      placeholder: (context,
+                                                              url) =>
+                                                          const CircularProgressIndicator(),
+                                                      errorWidget: (context,
+                                                              url, error) =>
+                                                          ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
+                                                        child: const Image(
+                                                          height: 70,
+                                                          width: 70,
+                                                          image: AssetImage(
+                                                              "assets/images/avatar.jpg"),
+                                                          fit: BoxFit.fill,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                sb.width5,
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      snapshot
+                                                          .child('name')
+                                                          .value
+                                                          .toString(),
+                                                      style: GoogleFonts.ubuntu(
+                                                          color:
+                                                              ThemeColor.black,
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Text(
+                                                      "+91 ${snapshot.child('phone').value.toString()}",
+                                                      style: GoogleFonts.ubuntu(
+                                                          color:
+                                                              ThemeColor.black,
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight
+                                                              .normal),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            sb.height10,
                                             Text(
-                                              "Selected user: ${snapshot.child('name').value.toString()}\n",
+                                              "A/C Balance: ${snapshot.child('balance').value.toString()}/-",
                                               style: GoogleFonts.ubuntu(
                                                   color: ThemeColor.black,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w400),
+                                                  fontSize: 14,
+                                                  fontWeight:
+                                                      FontWeight.normal),
                                             ),
-                                            alertBoxContents(snapshot),
+                                            Text(
+                                              "A/C Creation: ${snapshot.child('date').value.toString()}",
+                                              style: GoogleFonts.ubuntu(
+                                                  color: ThemeColor.black,
+                                                  fontSize: 14,
+                                                  fontWeight:
+                                                      FontWeight.normal),
+                                            ),
+                                            Text(
+                                              snapshot
+                                                  .child('email')
+                                                  .value
+                                                  .toString(),
+                                              style: GoogleFonts.ubuntu(
+                                                  color: ThemeColor.black,
+                                                  fontSize: 14,
+                                                  fontWeight:
+                                                      FontWeight.normal),
+                                            ),
                                           ],
                                         ),
                                       ),
                                       actions: <Widget>[
+                                        alertBoxContents(snapshot),
+                                        sb.height5,
                                         Center(
                                           child: TextButton(
                                             onPressed: () => Navigator.pop(
@@ -446,25 +546,22 @@ class _ViewUsersState extends State<ViewUsers> {
                                         // const SizedBox(
                                         //   height: 2,
                                         // ),
-                                        Text(
-                                          snapshot
-                                              .child('email')
-                                              .value
-                                              .toString(),
-                                          style: GoogleFonts.ubuntu(
-                                            color: ThemeColor.black,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
+                                        // Text(
+                                        //   snapshot
+                                        //       .child('email')
+                                        //       .value
+                                        //       .toString(),
+                                        //   style: GoogleFonts.ubuntu(
+                                        //     color: ThemeColor.black,
+                                        //     fontSize: 16,
+                                        //     fontWeight: FontWeight.normal,
+                                        //   ),
+                                        // ),
                                         // const SizedBox(
                                         //   height: 2,
                                         // ),
                                         Text(
-                                          snapshot
-                                              .child('phone')
-                                              .value
-                                              .toString(),
+                                          "+91 ${snapshot.child('phone').value.toString()}",
                                           style: GoogleFonts.ubuntu(
                                             color: ThemeColor.black,
                                             fontSize: 16,

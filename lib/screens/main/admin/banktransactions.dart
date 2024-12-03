@@ -253,7 +253,7 @@ class _BanktransactionsScreenState extends State<BanktransactionsScreen> {
                           ),
                         ),
                       ),
-                      Divider(
+                     const Divider(
                         color: Colors.black,
                         thickness: 0.5,
                       )

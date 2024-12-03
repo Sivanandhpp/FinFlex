@@ -141,7 +141,7 @@ class PaymentScreen extends StatelessWidget {
                 sb.height20,
                 GestureDetector(
                   onTap: () async {
-                    if (double.parse(_amountController.text) > 0) {
+                    if (double.parse(_amountController.text) > 0 && double.parse(_amountController.text) < 100000) {
                       if (userData.role == 'admin' ||
                           userData.balance >=
                               double.parse(_amountController.text)) {
@@ -170,6 +170,18 @@ class PaymentScreen extends StatelessWidget {
                                   style: TextStyle(color: ThemeColor.white),
                                 )));
                       }
+                    }else{
+                      ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(15.0))),
+                                backgroundColor: ThemeColor.primary,
+                                content: Text(
+                                  'Transaction not allowed',
+                                  style: TextStyle(color: ThemeColor.white),
+                                )));
                     }
                   },
                   child: Container(
