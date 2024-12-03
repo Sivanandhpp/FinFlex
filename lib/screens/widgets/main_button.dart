@@ -10,13 +10,13 @@ class MainButton extends StatelessWidget {
   final String? iconPath;
   final Function() onTap;
   const MainButton({
-    Key? key,
+    super.key,
     required this.text,
     this.backgroundColor,
     this.textColor,
     required this.onTap,
     this.iconPath,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

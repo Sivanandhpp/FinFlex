@@ -55,17 +55,17 @@ class Storage {
   //   return downloadURL;
   // }
 
-  getURL(
-    String pdfName,
-    String semester,
-    String content,
-  ) {
-    String revision = 'revv'; //userData.revision;
-    String pdfNamePursed = pdfName.replaceAll(RegExp('\\s+'), '%20');
-    String semsterPursed = semester.replaceAll(RegExp('\\s+'), '%20');
-    // ignore: unnecessary_brace_in_string_interps
-    return "https://firebasestorage.googleapis.com/v0/b/finflex-ebanking.appspot.com/o/docs%2F${revision}%2F${semsterPursed}%2F${content}%2F${pdfNamePursed}?alt=media";
-  }
+  // getURL(
+  //   String pdfName,
+  //   String semester,
+  //   String content,
+  // ) {
+  //   String revision = 'revv'; //userData.revision;
+  //   String pdfNamePursed = pdfName.replaceAll(RegExp('\\s+'), '%20');
+  //   String semsterPursed = semester.replaceAll(RegExp('\\s+'), '%20');
+  //   // ignore: unnecessary_brace_in_string_interps
+  //   return "https://firebasestorage.googleapis.com/v0/b/finflex-ebanking.appspot.com/o/docs%2F${revision}%2F${semsterPursed}%2F${content}%2F${pdfNamePursed}?alt=media";
+  // }
 
   // TO HANDLE NOTIFICATION IMG
   Future<String> uploadNotificationImg(

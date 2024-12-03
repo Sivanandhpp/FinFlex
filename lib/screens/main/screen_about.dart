@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,8 +6,7 @@ import '../../core/globalvalues/sizedboxes.dart' as sb;
 import '../../core/globalvalues/theme_color.dart';
 
 class ScreenAbout extends StatelessWidget {
-  ScreenAbout({super.key, required this.topBar});
-  bool topBar;
+  ScreenAbout({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,34 +16,33 @@ class ScreenAbout extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                topBar
-                    ? GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(
-                                  left: 0, right: 10, top: 10, bottom: 10),
-                              child: const Icon(
-                                Icons.arrow_back_ios_new,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              "About",
-                              style: GoogleFonts.ubuntu(
-                                color: ThemeColor.black,
-                                fontSize: 26,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(
+                            left: 0, right: 10, top: 10, bottom: 10),
+                        child: const Icon(
+                          Icons.arrow_back_ios_new,
+                          color: Colors.black,
                         ),
-                      )
-                    : Container(),
+                      ),
+                      Text(
+                        "About",
+                        style: GoogleFonts.ubuntu(
+                          color: ThemeColor.black,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 //   children: [
@@ -242,7 +238,7 @@ class ScreenAbout extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.all(10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -312,10 +308,7 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Divider(
-                      color: Colors.black,
-                      thickness: 0.5,
-                    ),
+
                     Container(
                       width: double.infinity,
                       // height: 100,
@@ -331,7 +324,7 @@ class ScreenAbout extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.all(10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -401,10 +394,10 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Divider(
-                      color: Colors.black,
-                      thickness: 0.5,
-                    ),
+                    // const Divider(
+                    //   color: Colors.black,
+                    //   thickness: 0.5,
+                    // ),
                     Container(
                       width: double.infinity,
                       // height: 100,
@@ -420,7 +413,7 @@ class ScreenAbout extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.all(10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -490,10 +483,10 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Divider(
-                      color: Colors.black,
-                      thickness: 0.5,
-                    ),
+                    // const Divider(
+                    //   color: Colors.black,
+                    //   thickness: 0.5,
+                    // ),
                     Container(
                       width: double.infinity,
                       // height: 100,
@@ -509,7 +502,7 @@ class ScreenAbout extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.all(10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -579,10 +572,10 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Divider(
-                      color: Colors.black,
-                      thickness: 0.5,
-                    ),
+                    // const Divider(
+                    //   color: Colors.black,
+                    //   thickness: 0.5,
+                    // ),
                     Container(
                       width: double.infinity,
                       // height: 100,
@@ -598,7 +591,7 @@ class ScreenAbout extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.all(10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -670,10 +663,10 @@ class ScreenAbout extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Divider(
-                  color: Colors.black,
-                  thickness: 0.5,
-                ),
+                // const Divider(
+                //   color: Colors.black,
+                //   thickness: 0.5,
+                // ),
                 sb.height80
               ],
             ),

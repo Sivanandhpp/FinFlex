@@ -189,7 +189,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                           period: const Duration(milliseconds: 3000),
                           highlightColor: ThemeColor.lightBlue,
                           child: Text(
-                            "$finalBal",
+                            finalBal,
                             // "₹${snapshot.child('balance').value.toString()}",
                             style: GoogleFonts.ibmPlexSans(
                                 fontSize: 55,

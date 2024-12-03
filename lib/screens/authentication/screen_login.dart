@@ -8,7 +8,7 @@ import '../widgets/main_button.dart';
 import '../../core/globalvalues/theme_color.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -72,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                                   'gmail.com') {
                             return "Enter a valid E-Mail ID";
                           }
+                          return null;
                         },
                         style: GoogleFonts.poppins(
                           color: ThemeColor.black,
@@ -105,6 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                           } else if (_passwordController.text.length < 8) {
                             return "Password should be more than 8 letters";
                           }
+                          return null;
                         },
                         obscureText: true,
                         style: GoogleFonts.poppins(

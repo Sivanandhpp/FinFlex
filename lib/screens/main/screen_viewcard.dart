@@ -25,7 +25,7 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
                 GestureDetector(

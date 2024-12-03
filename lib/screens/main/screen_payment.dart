@@ -25,7 +25,7 @@ class PaymentScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
                 GestureDetector(
@@ -111,6 +111,7 @@ class PaymentScreen extends StatelessWidget {
                     } else if (double.parse(_amountController.text) < 1) {
                       return "This field can't be zero";
                     }
+                    return null;
                   },
                   style: GoogleFonts.poppins(
                     color: ThemeColor.textFieldHintColor,

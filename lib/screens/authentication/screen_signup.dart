@@ -65,6 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           if (_nameController.text.isEmpty) {
                             return "This field can't be empty";
                           }
+                          return null;
                         },
                         style: GoogleFonts.poppins(
                           color: ThemeColor.black,
@@ -97,6 +98,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           } else if (_phoneNoController.text.length != 10) {
                             return "Phone number must have 10 digits";
                           }
+                          return null;
                         },
                         style: GoogleFonts.poppins(
                           color: ThemeColor.black,
@@ -134,6 +136,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   'gmail.com') {
                             return "Enter a valid E-Mail ID";
                           }
+                          return null;
                         },
                         style: GoogleFonts.poppins(
                           color: ThemeColor.black,
@@ -166,6 +169,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           } else if (_passwordController.text.length < 8) {
                             return "Password should be more than 8 letters";
                           }
+                          return null;
                         },
                         obscureText: true,
                         style: GoogleFonts.poppins(

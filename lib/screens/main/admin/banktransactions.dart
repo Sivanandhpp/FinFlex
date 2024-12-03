@@ -1,12 +1,9 @@
-import 'dart:math' as math;
 import 'package:finflex/core/globalvalues/theme_color.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/main.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shimmer/shimmer.dart';
 import '../../../core/globalvalues/sizedboxes.dart' as sb;
 
 class BanktransactionsScreen extends StatefulWidget {
@@ -30,7 +27,7 @@ class _BanktransactionsScreenState extends State<BanktransactionsScreen> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               GestureDetector(

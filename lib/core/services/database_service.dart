@@ -103,23 +103,26 @@ class DatabaseService {
   Future<void> addMoney(
       double amount, String receiverUid, BuildContext context) async {
     try {
+
       //Main
       DateTime now = DateTime.now();
-      final mainTransactionRef = dbReference.child(
-          "transactions/${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}");
+      String dateRef =
+          "${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}";
+      final mainTransactionRef = dbReference.child("transactions/$dateRef");
       String timeAddMoney =
           "${now.hour.toString().padLeft(2, "0")}:${now.minute.toString().padLeft(2, "0")}:${now.second.toString().padLeft(2, "0")}";
       String dateAddMoney =
           "${now.day.toString().padLeft(2, "0")}/${now.month.toString().padLeft(2, "0")}/${now.year}";
+
+      //Sender Name
       String senderName = userData.name;
+      if (userData.role == 'admin') {
+        senderName = 'Bank Deposit';
+      }
       //Receiver Name Fetch
       DataSnapshot receiverName =
           await dbReference.child("users/$receiverUid/name").get();
       String receiverNameDB = receiverName.value.toString();
-
-      if (userData.role == 'admin') {
-        senderName = 'Bank Deposit';
-      }
 
       mainTransactionRef.set({
         'senderName': senderName,
@@ -135,21 +138,21 @@ class DatabaseService {
       //Balance Update
       DataSnapshot senderBalance =
           await dbReference.child("users/${userData.userid}/balance").get();
-      String senderBalanceDB = senderBalance.value.toString();
 
-        if (userData.role != 'admin') {
-       dbReference
-          .child('users/${userData.userid}/balance')
-          .set(double.parse(senderBalanceDB) - amount);
+      if (userData.role != 'admin') {
+        dbReference
+            .child('users/${userData.userid}/balance')
+            .set(double.parse(senderBalance.value.toString()) - amount);
+      } else {
+        dbReference
+            .child('users/${userData.userid}/balance')
+            .set(double.parse(senderBalance.value.toString()) + amount);
       }
-      
 
       final senderTransactionRef =
-          dbReference.child('users/${userData.userid}/transactions');
-      senderTransactionRef
-          .child(
-              "${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}")
-          .set({
+          dbReference.child('users/${userData.userid}/transactions/$dateRef');
+
+      senderTransactionRef.set({
         'name': receiverNameDB,
         'date': dateAddMoney,
         'time': timeAddMoney,
@@ -160,22 +163,19 @@ class DatabaseService {
       });
 
       //Receiver
-      //Balance Update
+      //Balance get
       DataSnapshot receiverBalance =
           await dbReference.child("users/$receiverUid/balance").get();
-      String receiverBalanceDB = receiverBalance.value.toString();
-
+      //Balance set
       dbReference
           .child('users/$receiverUid/balance')
-          .set(double.parse(receiverBalanceDB) + amount);
+          .set(double.parse(receiverBalance.value.toString()) + amount);
 
       final receiverTransactionRef =
-          dbReference.child('users/$receiverUid/transactions');
-      receiverTransactionRef
-          .child(
-              "${now.year}${now.month.toString().padLeft(2, "0")}${now.day.toString().padLeft(2, "0")}${now.hour.toString().padLeft(2, "0")}${now.minute.toString().padLeft(2, "0")}${now.second.toString().padLeft(2, "0")}")
-          .set({
-        'name': userData.name,
+          dbReference.child('users/$receiverUid/transactions/$dateRef');
+
+      receiverTransactionRef.set({
+        'name': senderName,
         'date': dateAddMoney,
         'time': timeAddMoney,
         'sent': false,

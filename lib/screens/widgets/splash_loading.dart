@@ -4,7 +4,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../core/globalvalues/sizedboxes.dart' as sb;
 
 class LoadingScreen extends StatelessWidget {
-  const LoadingScreen({Key? key, required this.loadingTitle}) : super(key: key);
+  const LoadingScreen({super.key, required this.loadingTitle});
   final String loadingTitle;
   @override
   Widget build(BuildContext context) {

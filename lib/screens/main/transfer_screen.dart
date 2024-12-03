@@ -10,7 +10,7 @@ import '../../core/globalvalues/sizedboxes.dart' as sb;
 import '../../core/globalvalues/theme_color.dart';
 
 class TransferScreen extends StatefulWidget {
-  TransferScreen({Key? key}) : super(key: key);
+  const TransferScreen({super.key});
 
   @override
   State<TransferScreen> createState() => _TransferScreenState();

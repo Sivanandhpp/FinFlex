@@ -7,7 +7,7 @@ import '../../core/globalvalues/theme_color.dart';
 import '../../core/services/auth_service.dart';
 
 class DisabledAccount extends StatelessWidget {
-  const DisabledAccount({Key? key}) : super(key: key);
+  const DisabledAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class DisabledAccount extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ScreenAbout(topBar: true),
+                            builder: (context) => ScreenAbout(),
                           ));
                     },
                     child: Container(

@@ -31,7 +31,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               GestureDetector(
@@ -110,7 +110,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                           period: const Duration(milliseconds: 3000),
                           highlightColor: ThemeColor.lightBlue,
                           child: Text(
-                            "$finalBal",
+                            finalBal,
                             // "₹${snapshot.child('balance').value.toString()}",
                             style: GoogleFonts.ibmPlexSans(
                                 fontSize: 55,
@@ -159,13 +159,13 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                   snapshot.child('sent').value == true
                                       ? Transform.rotate(
                                           angle: 45 * math.pi / 180,
-                                          child: Icon(FontAwesomeIcons.arrowUp,
+                                          child: const Icon(FontAwesomeIcons.arrowUp,
                                               color: ThemeColor.red,
                                               size: 30.0),
                                         )
                                       : Transform.rotate(
                                           angle: 45 * math.pi / 180,
-                                          child: Icon(
+                                          child: const Icon(
                                               FontAwesomeIcons.arrowDown,
                                               color: ThemeColor.green,
                                               size: 30.0),

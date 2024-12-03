@@ -10,7 +10,7 @@ import '../../../core/globalvalues/sizedboxes.dart' as sb;
 import '../../../core/globalvalues/theme_color.dart';
 
 class DepositScreen extends StatefulWidget {
-  DepositScreen({Key? key}) : super(key: key);
+  const DepositScreen({super.key});
 
   @override
   State<DepositScreen> createState() => _DepositScreenState();

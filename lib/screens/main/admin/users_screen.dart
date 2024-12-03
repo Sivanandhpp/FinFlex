@@ -2,17 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:finflex/core/services/database_service.dart';
 import 'package:finflex/main.dart';
-import 'package:finflex/screens/main/admin/screen_viewquery.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../core/globalvalues/sizedboxes.dart' as sb;
 import '../../../core/globalvalues/theme_color.dart';
 
 class ViewUsers extends StatefulWidget {
-  ViewUsers({Key? key}) : super(key: key);
+  const ViewUsers({super.key});
 
   @override
   State<ViewUsers> createState() => _ViewUsersState();

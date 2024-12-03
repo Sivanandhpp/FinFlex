@@ -18,7 +18,6 @@ class PaymentDoneScreen extends StatefulWidget {
 class _PaymentDoneScreenState extends State<PaymentDoneScreen> {
   bool _checked = false;
   bool _indeterminate = false;
-  bool _isLoading = true;
   void setChecked() async {
     await Future.delayed(const Duration(milliseconds: 500)).then(
       (value) {

@@ -36,9 +36,9 @@ class IntroScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Center(
+              const Center(
                 child: Column(
-                  children: const [
+                  children: [
                     Text(
                       "Let's get started",
                       style: TextStyle(

@@ -346,7 +346,7 @@ class _ScreenProfileState extends State<ScreenProfile> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ScreenAbout(topBar: true),
+                            builder: (context) => ScreenAbout(),
                           ));
                     },
                     child: Container(
