@@ -142,7 +142,7 @@ class PaymentScreen extends StatelessWidget {
                 sb.height20,
                 GestureDetector(
                   onTap: () async {
-                    if (double.parse(_amountController.text) > 0 && double.parse(_amountController.text) < 100000) {
+                    if (double.parse(_amountController.text) > 0 && double.parse(_amountController.text) <= 100000) {
                       if (userData.role == 'admin' ||
                           userData.balance >=
                               double.parse(_amountController.text)) {

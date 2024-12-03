@@ -317,7 +317,7 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ),
                     ),
-
+                    sb.height5,
                     Container(
                       width: double.infinity,
                       // height: 100,
@@ -412,6 +412,7 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ),
                     ),
+                    sb.height5,
                     // const Divider(
                     //   color: Colors.black,
                     //   thickness: 0.5,
@@ -510,6 +511,7 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ),
                     ),
+                    sb.height5,
                     // const Divider(
                     //   color: Colors.black,
                     //   thickness: 0.5,
@@ -608,6 +610,7 @@ class ScreenAbout extends StatelessWidget {
                         ),
                       ),
                     ),
+                    sb.height5,
                     // const Divider(
                     //   color: Colors.black,
                     //   thickness: 0.5,
@@ -688,7 +691,7 @@ class ScreenAbout extends StatelessWidget {
                                     Uri(
                                         scheme: "https",
                                         host: "linkedin.com",
-                                        path: "in/anuranj-s-manoj-ba5871250"));
+                                        path: "in/"));
                               },
                               child: ClipRRect(
                                 borderRadius:
